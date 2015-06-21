@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* _________________________________________________
+
+	GTA IV Run Stats Counter
+	by Jake and Sean
+	
+	© 2012 Sean Brutscher
+
+
+built on:
+
+CSS3 Media Query Reporter
+  by David Cochran - aLittleCode.com
+
+_____________________________________________________
+
+*/
+
+
+.content:after {
+	display: block;
+	width:100%;
+	height: auto;
+	margin: 0; padding: 0.2em 0;
+	position: fixed;
+	bottom: 60px;
+	text-align: center;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 30px;
+	font-size: 3.0rem;
+	line-height: 1.2;	
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: 0 1px 2px #222;
+	letter-spacing: normal;
+	word-spacing: normal;
+	*display: inline; /* For IE6/IE7 */
+	zoom: 1; /* For IE6/IE7 */
+}
+
+@media only screen and (min-width: 320px) {
+	.content:after {
+		content: "320 and up";
+		background-color: rgba(50, 150, 150, 0.7);
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.content:after {
+		content: "480 and up";
+		background-color: rgba(150, 50, 150, 0.7);
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.content:after {
+		content: "600 and up";
+		background-color: rgba(150, 150, 50, 0.7);	
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.content:after {
+		content: "768 and up";	
+		background-color: rgba(150, 50, 50, 0.7);
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.content:after {
+		content: "992 and up";
+		background-color: rgba(50, 150, 50, 0.7);	
+	}
+}
+
+@media only screen and (min-width: 1382px) {
+	.content:after {
+		content: "1382 and up";	
+		background-color: rgba(50, 50, 150, 0.7);
+	}
+}
+
+
+

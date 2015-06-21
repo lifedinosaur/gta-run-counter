@@ -1,0 +1,444 @@
+<!doctype html>
+
+<!--
+		GTA IV Run Stats Counter
+        by Jake and Sean
+        
+        © 2012 Sean Brutscher  
+-->
+
+
+<!-- Built on:
+
+        320 and Up boilerplate extension
+        Andy Clarke http://about.me/malarkey
+        Keith Clark http://twitter.com/keithclarkcouk
+        Version: 2
+        URL: http://stuffandnonsense.co.uk/projects/320andup/
+        License: http://creativecommons.org/licenses/MIT
+-->
+
+<!--[if IEMobile 7]><html class="no-js iem7 oldie"><![endif]-->
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>GTA IV Run Stats</title>
+    <meta name="description" content="" />
+    <meta name="author" content="sdotbizzle.biz">
+    
+    <!-- http://t.co/dKP3o1e -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0">
+    
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="css/style.css?v=1">
+    <link rel="stylesheet" media="print" href="css/print.css?v=1">
+    <!-- For progressively larger displays -->
+    <link rel="stylesheet" media="only screen and (min-width: 480px)" href="css/480.css?v=1">
+    <link rel="stylesheet" media="only screen and (min-width: 600px)" href="css/600.css?v=1">
+    <link rel="stylesheet" media="only screen and (min-width: 768px)" href="css/768.css?v=1">
+    <link rel="stylesheet" media="only screen and (min-width: 992px)" href="css/992.css?v=1">
+    <link rel="stylesheet" media="only screen and (min-width: 1382px)" href="css/1382.css?v=1">
+    <!-- For Retina displays -->
+    <link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)" href="css/2x.css?v=1">
+    <!-- Media Query Reporter -->
+    <!--<link rel="stylesheet" href="css/style-mediaquery-reporter.css">-->
+    <!--[if (lt IE 9) & (!IEMobile)]>
+    <script src="js/libs/selectivizr-min.js"></script>
+    <![endif]-->
+    
+    <!-- JavaScript -->
+    <script src="js/libs/modernizr-2.0.6.min.js"></script>
+    <script src="js/libs/jquery-1.7.2.min.js"></script>
+    
+    <!-- For iPhone 4 -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
+    <!-- For iPad 1-->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
+    <!-- For iPhone 3G, iPod Touch and Android -->
+    <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
+    <!-- For Nokia -->
+    <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
+    <!-- For everything else -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!--iOS. Delete if not required -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-startup-image" href="img/splash.png">
+    
+    <!--Microsoft. Delete if not required -->
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--[if lt IE 7 ]><script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script><script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script><![endif]-->
+    
+    <!-- http://t.co/y1jPVnT -->
+    <link rel="canonical" href="/">
+</head>
+
+<body class="clearfix">
+
+    <header role="banner">
+        <hgroup>
+            <nav class="clearfix">
+                <h1>THE GTA IV RUN COUNTER</h1>
+            </nav>
+        </hgroup>
+    </header>
+    
+    <div class="display-wrap">
+        <div class="content clearfix">
+            <article>
+                <section class="current-run" role="main">
+                    <div class="content-wrap">
+                        
+                        <div><a name="currentview" id="currentview"></a></div>
+                        <div><a name="gameview" id="gameview"></a></div>
+                        
+                        <div class="inline-wrap">
+                            <a href="#" class="current-run inline-wrap">
+                            	<span class="inline-content maintitle"><h2>CURRENT RUN</h2></span>
+                                <span class="inline-content image"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="folder streaks">
+                            <table class="streaks">
+                                <tr>
+                                    <th class="title">
+                                        <a href="#" class="streaks">
+                                        	Streaks <span class="note">(3 in 7 to start)</span>
+                                            <span class="count"></span>
+                                        </a>
+                                        
+                                    </th>
+                                    <tr>
+                                        <th class="image">
+                                        	<a href="#" class="streaks"><span class="inline-content image"></span><span class="current-streak"></span></a>
+                                            
+                                        </th>
+                                    </tr>
+                                </tr>
+                            </table>
+                            <div class="streaks-folder subfolder">
+                                <table class="streaks">
+                                    <tr class="cats">
+                                        <th>Kill <span class="note">(5)</span></th>
+                                        <th>Rampage <span class="note">(10)</span></th>
+                                        <th>Serial <span class="note">(20)</span></th>
+                                        <th>Long</th>
+                                    </tr>
+                                    <tr>
+                                        <td id="kill">0</td>
+                                        <td id="rampage">0</td>
+                                        <td id="serial">0</td>
+                                        <td id="long">0</td>
+                                    </tr>
+                            	</table>
+                            </div>
+                            
+                            <div class="game-clock inline-wrap">
+                                <span class="inline-content clocktitle">
+                                    GAME<br/>CLOCK
+                                </span>
+                                <span class="inline-content clock">
+                                    <input type="text" class="inline-content text" id="game-clock" readonly="readonly" value="0" />
+                                </span>
+                            </div>
+                        
+                            <table class="current-run">
+                                <tr>
+                                    <th>
+                                        <input type="button" class="button sub" value="-" name="sub-civ" />
+                                        Civilians
+                                    </th>
+                                    <th>
+                                        <input type="button" class="button sub" value="-" name="sub-cop" />
+                                        Cops
+                                    </th>
+                                    <th>
+                                        <input type="button" class="button sub" value="-" name="sub-star" />
+                                        Stars
+                                    </th>
+                                    <th>
+                                        <input type="button" class="button sub" value="-" name="sub-cleared" />
+                                        Cleared<br/>Stars
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="stat" id="civs">0</td>
+                                    <td class="stat" id="cops">0</td>
+                                    <td class="stat" id="stars">0</td>
+                                    <td class="stat" id="cleared">0</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="button" class="button add" value="+" name="add-civ" /></td>
+                                    <td><input type="button" class="button add" value="+" name="add-cop" /></td>
+                                    <td><input type="button" class="button add" value="+" name="add-star" /></td>
+                                    <td><input type="button" class="button" value="C" name="clear-stars" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="folder game-control controller">
+                            <div><a name="controlview" id="controlview"></a></div>
+                            <table>
+                                <tr>
+                                	<th class="title"><a href="#" class="controller"><span class="inline-content title">Game Control</span></a></th>
+                                </tr>
+                                <tr>
+                                	<th class="image"><a href="#" class="controller"><span class="inline-content image"></span></a></th>
+                                </tr>
+                            </table>
+                            <div class="controller-folder subfolder">
+                                <table class="controller">
+                                    <tr>
+                                        <td><input type="button" class="button" value="start" name="start" /></td>
+                                        <td><input type="button" class="button" value="reset" name="reset" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan=2><input type="button" class="button" value="submit" name="submit" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hr"></div>
+                </section>
+                
+                <section class="high-runs" role="complementary">
+                    <div class="content-wrap">
+                        
+                        <div><a name="highsview" id="highsview"></a></div>
+                        
+                        <div class="inline-wrap">
+                            <a href="#" class="high-runs inline-wrap">
+                            	<span class="inline-content maintitle"><h2>HIGH RUNS <span class="note">(Last 3)</span></h2></span>
+                                <span class="inline-content image"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="folder">
+                            <div class="run1">
+                                <div><a name="highsview-r1" id="highsview-r1"></a></div>
+                                <table>
+                                    <tr>
+                                        <th class="title">
+                                            <a href="#" class="run1"><span class="run1">Run 1</span><span class="count">0 : 00</span></a>
+                                        </th>
+                                        <tr>
+                                            <th class="image"><a href="#" class="run1"><span class="inline-content image"></span></a></th>
+                                        </tr>
+                                    </tr>
+                                </table>
+                                
+                                <div class="run1-folder subfolder">
+                                    <table class="runstats run1">
+                                        <tr>
+                                            <td>
+                                                <table class="boxstats">
+                                                    <tr>
+                                                        <th class="right-border">Civilians</th>
+                                                        <th>Cops</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="right-border" id="run1-civs">0</td>
+                                                        <td id="run1-cops">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan=2>Cleared Stars</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td  colspan=2 id="run1-cleared">0</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="boxstats streaks">
+                                                    <tr>
+                                                    	<th class="right-border">Kill <span class="note">(5)</span></th>
+                                                        <th>Rampage <span class="note">(10)</span></th>
+                                                    </tr>
+                                                    <tr>
+                                                    	<td class="right-border" id="run1-kill">0</td>
+                                                        <td id="run1-rampage">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                    	<th class="right-border">Serial <span class="note">(20)</span></th>
+                                                        <th>Long</th>
+                                                    </tr>
+                                                    <tr>
+                                                    	<td class="right-border" id="run1-serial">0</td>
+                                                        <td id="run1-long">0</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="run2">
+                                <div><a name="highsview-r2" id="highsview-r2"></a></div>
+                                <table>
+                                    <tr>
+                                        <th class="title">
+                                            <a href="#" class="run2"><span class="run2">Run 2</span><span class="count">0 : 00</span></a>
+                                        </th>
+                                        <tr>
+                                            <th class="image"><a href="#" class="run2"><span class="inline-content image"></span></a></th>
+                                        </tr>
+                                    </tr>
+                                </table>
+                                
+                                <div class="run2-folder subfolder">
+                                    <table class="runstats run2">
+                                        <tr>
+                                            <td>
+                                                <table class="boxstats">
+                                                    <tr>
+                                                        <th class="right-border">Civilians</th>
+                                                        <th>Cops</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="right-border" id="run2-civs">0</td>
+                                                        <td id="run2-cops">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan=2>Cleared Stars</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td  colspan=2 id="run2-cleared">0</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="boxstats streaks">
+                                                    <tr>
+                                                    	<th class="right-border">Kill <span class="note">(5)</span></th>
+                                                        <th>Rampage <span class="note">(10)</span></th>
+                                                    </tr>
+                                                    <tr>
+                                                    	<td class="right-border" id="run2-kill">0</td>
+                                                        <td id="run2-rampage">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                    	<th class="right-border">Serial <span class="note">(20)</span></th>
+                                                        <th>Long</th>
+                                                    </tr>
+                                                    <tr>
+                                                    	<td class="right-border" id="run2-serial">0</td>
+                                                        <td id="run2-long">0</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="run3">
+                                <div><a name="highsview-r3" id="highsview-r3"></a></div>
+                                <table>
+                                    <tr>
+                                        <th class="title">
+                                            <a href="#" class="run3"><span class="run3">Run 3</span><span class="count">0 : 00</span></a>
+                                            
+                                        </th>
+                                        <tr>
+                                            <th class="image"><a href="#" class="run3"><span class="inline-content image"></span></a></th>
+                                        </tr>
+                                    </tr>
+                                </table>
+                                
+                                <div class="run3-folder subfolder">
+                                    <table class="runstats run3">
+                                        <tr>
+                                            <td>
+                                                <table class="boxstats">
+                                                    <tr>
+                                                        <th class="right-border">Civilians</th>
+                                                        <th>Cops</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="right-border" id="run3-civs">0</td>
+                                                        <td id="run3-cops">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan=2>Cleared Stars</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td  colspan=2 id="run3-cleared">0</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="boxstats streaks">
+                                                    <tr>
+                                                    	<th class="right-border">Kill <span class="note">(5)</span></th>
+                                                        <th>Rampage <span class="note">(10)</span></th>
+                                                    </tr>
+                                                    <tr>
+                                                    	<td class="right-border" id="run3-kill">0</td>
+                                                        <td id="run3-rampage">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                    	<th class="right-border">Serial <span class="note">(20)</span></th>
+                                                        <th>Long</th>
+                                                    </tr>
+                                                    <tr>
+                                                    	<td class="right-border" id="run3-serial">0</td>
+                                                        <td id="run3-long">0</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hr"></div>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </div>
+    
+    <footer role="contentinfo" class="clearfix">
+        <h3>&copy;2012</h3>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/plugins.js"></script>
+    <script src="js/easing.js"></script>
+	<script src="js/script.js?v=1"></script>
+    <script src="js/mylibs/helper.js"></script>
+    
+    <!--[if (lt IE 9) & (!IEMobile)]>
+    <script src="js/libs/imgsizer.js"></script>
+    <![endif]-->
+    
+    <script>
+    // iOS scale bug fix
+    MBP.scaleFix();
+    
+    // Respond.js
+    yepnope({
+        test : Modernizr.mq('(only all)'),
+        nope : ['js/libs/respond.min.js']
+    });
+    </script>
+</body>
+
+</html>

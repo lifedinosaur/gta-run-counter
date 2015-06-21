@@ -1,0 +1,86 @@
+/* _________________________________________________
+
+	GTA IV Run Stats Counter
+	by Jake and Sean
+	
+	© 2012 Sean Brutscher
+
+
+built on:
+
+320 and Up boilerplate extension
+Andy Clarke http://about.me/malarkey
+Version: 2
+URL: http://stuffandnonsense.co.uk/projects/320andup/
+License: http://creativecommons.org/licenses/MIT/
+_____________________________________________________
+
+//  index:
+
+1 ROOT
+2 HEADINGS
+3 TYPOGRAPHY
+4 LINKS
+5 FIGURES & IMAGES
+6 TABLES
+7 FORMS
+8 BANNER
+9 NAVIGATION
+10 CONTENT
+11 MAIN
+12 COMPLEMENTARY
+13 CONTENTINFO
+14 GLOBAL OBJECTS
+15 VENDOR-SPECIFIC 
+16 MODERNIZR
+17 TEMPLATE SPECIFICS
+
+COLOURS 
+
+*/
+
+
+/*  HEADINGS */
+
+h1 {
+	margin-bottom: 0.1em;
+	font-size: 50px;
+	font-size: 5.0rem;
+	line-height: 1;
+}
+h2 {
+	margin-bottom: 0.1em;
+	font-size: 30px;
+	font-size: 3.0rem;
+	line-height: 1.2;
+}
+
+/*  HEADER  */
+
+header { 
+	text-align: left;
+}
+header hgroup { 
+	width: 90%;
+	margin-left: 2em; 
+}
+
+/*  CONTENT  */
+
+.content section.current-run { 
+	width: 50%;
+	border-right: 1px #404040 solid;
+}
+.content section.high-runs {
+	width: 50%;
+	margin-top:0;
+	border-left: 1px #404040 solid;
+	border-top: 1px #404040 solid;
+}
+
+/*  FOOTER  */
+
+footer h3 { 
+	width: 90%;
+	margin-left: 2em;
+}
