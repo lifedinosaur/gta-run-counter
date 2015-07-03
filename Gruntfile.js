@@ -178,11 +178,7 @@ module.exports = function(grunt) {
           sourceMap: false,
           outputSourceFiles: false
         },
-        src: [
-          '<%= config.paths.pkg %>' + 'bootstrap/less/bootstrap.less',
-          '<%= config.paths.pkg %>' + 'font-awesome/less/font-awesome.less',
-          '<%= config.paths.src.less %>' + 'custom.less'
-        ],
+        src: ['<%= config.paths.src.less %>' + 'custom.less'],
         dest: '<%= config.paths.dest.css %>' + 'custom.min.css'
       }
     },
