@@ -99,6 +99,14 @@ module.exports = function(grunt) {
           dest: '<%= config.paths.dest.bootstrap %>'
         }]
       },
+      fontawesome: {
+        files: [{
+          expand: true,
+          flatten: true,
+          src: '<%= config.paths.pkg %>' + 'font-awesome/fonts/*',
+          dest: '<%= config.paths.dest.fonts %>'
+        }]
+      },
       html: {
         files: [{
           expand: true,
@@ -172,6 +180,7 @@ module.exports = function(grunt) {
         },
         src: [
           '<%= config.paths.pkg %>' + 'bootstrap/less/bootstrap.less',
+          '<%= config.paths.pkg %>' + 'font-awesome/less/font-awesome.less',
           '<%= config.paths.src.less %>' + 'custom.less'
         ],
         dest: '<%= config.paths.dest.css %>' + 'custom.min.css'
@@ -328,11 +337,12 @@ module.exports = function(grunt) {
     grunt.task.run(tasks);
   });
 
-  grunt.registerTask('copy:packages', [
+  grunt.registerTask('copy:libs', [
     'copy:bootstrap',
+    'copy:fontawesome',
     'copy:jquery',
-    'copy:lodash',
     'copy:knockout',
+    'copy:lodash',
     'copy:require',
     'amdify:js'
   ]);
@@ -358,7 +368,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('js:prod', [
     'clean:lib',
-    'copy:packages',
+    'copy:libs',
     'connect',
     'js:dev',
     'requirejs',
@@ -380,7 +390,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build:dev', [
     'clean:build',
-    'copy:packages',
+    'copy:libs',
     'copy:source',
     'source:dev'
   ]);
