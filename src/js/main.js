@@ -61,10 +61,6 @@ function ($, _, ko) {
       openMenu(menuType);
     };
 
-    menuVM[menuType + 'Close'] = function () {
-      closeMenu(menuType);
-    };
-
     menuVM[menuType + 'IsOpen'] = ko.observable(false);
   }
 
@@ -80,38 +76,22 @@ function ($, _, ko) {
       throw new Error('openMenu cannot find the menu-item for menuType ' + menuType);
     }
 
-    if ($btn.hasClass('open')) {
-      return;
+    $btn.toggleClass('open');
+
+    var open = $btn.hasClass('open');
+
+    if (open) {
+      $btn.find('.arrow')
+        .removeClass('fa-angle-right')
+        .addClass('fa-times');
+    }
+    else {
+      $btn.find('.arrow')
+        .removeClass('fa-times')
+        .addClass('fa-angle-right');
     }
 
-    $btn.addClass('open');
-
-    $btn.find('.arrow')
-      .removeClass('fa-angle-right')
-      .addClass('fa-times');
-
-    menuVM[menuType + 'IsOpen'](true);
-  }
-
-  function closeMenu (menuType) {
-    if (!ko.unwrap(menuVM[menuType + 'IsOpen'])) {
-      openMenu(menuType);
-      return;
-    }
-
-    var $btn = $('#menu-btn-' + menuType).parents('.menu-item');
-
-    if (!$btn.length) {
-      throw new Error('openMenu cannot find the menu-item for menuType ' + menuType);
-    }
-
-    $btn.removeClass('open');
-
-    $btn.find('.arrow')
-      .removeClass('fa-times')
-      .addClass('fa-angle-right');
-
-    menuVM[menuType + 'IsOpen'](false);
+    menuVM[menuType + 'IsOpen'](open);
   }
 
   menuVM.generateViewModel();
