@@ -1,0 +1,140 @@
+@buttonHeight: 44px;
+@controllerMaxWidth: 350px;
+
+@menuAnimTime: 0.25s;
+
+.well {
+  padding: 1.5em 20px;
+}
+
+.controller {
+  section {
+    text-align: center;
+    padding: 0 20px 1.2em;
+    margin: 0;
+
+    h3 {
+      margin: 0.2em 0 0.5em;
+    }
+  }
+
+  section + section {
+    padding-top: 1.5em;
+  }
+}
+
+.clock {
+  .form-control {
+    height: auto;
+    font-size: 1.6em;
+    margin: 0 auto;
+    max-width: @controllerMaxWidth;
+  }
+}
+
+.menu {
+  nav {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    //max-width: @controllerMaxWidth;
+
+    > .menu-item {
+      display: inline-block;
+      margin: 0.3em 0;
+      width: 100%;
+    }
+  }
+
+  .primary {
+    //border: 1px solid @brand-primary-dark;
+  }
+
+  .btn {
+    display: block;
+    font-size: 1em;
+    height: @buttonHeight;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    transition: all @menuAnimTime ease;
+    width: 100%;
+
+    &:focus {
+      background: @brand-primary;
+    }
+
+    span {
+      display: inline-block;
+      text-align: left;
+    }
+
+    .label-wrapper {
+      margin: 0;
+      padding: 0 0.6em;
+      transition: all @menuAnimTime ease;
+      width: 100%;
+    }
+
+    .icon {
+      background: #fff;
+      border: 1px solid @brand-primary-dark;
+      border-radius: 14px;
+      color: @brand-primary-dark;
+      font-size: 14px;
+      height: 28px;
+      line-height: 28px;
+      margin-right: 0.6em;
+      text-align: center;
+      width: 28px;
+    }
+
+    .label {
+      font-weight: 300;
+      padding: 0;
+    }
+
+    .arrow {
+      cursor: pointer;
+      font-size: 1.2em;
+      height: @buttonHeight;
+      line-height: @buttonHeight;
+      overflow: hidden;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      transition: all @menuAnimTime ease;
+      width: 2em;
+    }
+  }
+
+  .open .btn {
+    background: @brand-primary;
+    border-radius: 0;
+    cursor: default;
+    margin-left: -40px;
+    padding-right: 100%;
+    padding-left: 80px;
+
+    .label-wrapper {
+      margin-left: -120px;
+    }
+
+    .arrow {
+      font-size: 1em;
+      transform: rotate(90deg);
+      width: 5em;
+    }
+  }
+}
+
+@media (min-width: @screen-xs-min) {
+  .menu {
+    .btn {
+      font-size: 1.2em;
+    }
+  }
+}

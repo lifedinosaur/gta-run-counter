@@ -42,6 +42,11 @@ module.exports = function(grunt) {
 
     pkgJson: grunt.file.readJSON('package.json', { encoding: 'utf8'}),
 
+    volo: {
+      'cmd-add': 'volo:add:-nostamp:',
+      'cmd-addF': 'volo:add:-f:-nostamp:'
+    },
+
 
     // tasks init:
 
@@ -74,6 +79,13 @@ module.exports = function(grunt) {
     },
 
     concat: {
+      css: {
+        src: [
+          '<%= config.paths.dest.css %>' + 'custom.min.css',
+          '<%= config.paths.voloPkg %>' + 'fontello/css/fontello.css'
+        ],
+        dest: '<%= config.paths.dest.css %>' + 'custom.min.css'
+      },
     },
 
     connect: {
@@ -99,12 +111,17 @@ module.exports = function(grunt) {
           dest: '<%= config.paths.dest.bootstrap %>'
         }]
       },
-      fontawesome: {
+      fonts: {
         files: [{
           expand: true,
           flatten: true,
           src: '<%= config.paths.pkg %>' + 'font-awesome/fonts/*',
           dest: '<%= config.paths.dest.fonts %>'
+        }, {
+          expand: true,
+          flatten: true,
+          src: '<%= config.paths.voloPkg %>' + 'fontello/font/*',
+          dest: '<%= config.paths.dest.font %>'
         }]
       },
       html: {
@@ -335,7 +352,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('copy:libs', [
     'copy:bootstrap',
-    'copy:fontawesome',
+    'copy:fonts',
     'copy:jquery',
     'copy:knockout',
     'copy:lodash',
@@ -347,6 +364,7 @@ module.exports = function(grunt) {
     'clean:css',
     'less:compile',
     'autoprefixer:compile',
+    'concat:css',
     'recess:validate'
   ]);
 

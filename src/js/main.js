@@ -4,16 +4,115 @@ require.config(
     paths:
     {
       bootstrap: 'lib/bootstrap/',
-      jquery: 'lib/jquery'
+      jquery: 'lib/jquery',
+      knockout: 'lib/knockout',
+      lodash: 'lib/lodash'
     }
 });
 
 define(
 [
-  'jquery'
+  'jquery',
+  'lodash',
+  'knockout'
 ],
-function ($) {
+function ($, _, ko) {
   'use strict';
 
-  console.log('success!', $);
+
+  function ViewModel (targetNodeId) {
+    if (targetNodeId === undefined) {
+      throw new Error('The parameter \'targetNodeId\' must be defined.');
+    }
+
+    if (!$(targetNodeId).length) {
+      throw new Error('The element referenced by \'targetNodeId\' must exist.');
+    }
+
+    this.bindingNodeId = targetNodeId;
+  }
+
+  ViewModel.prototype = {
+    'constructor': ViewModel,
+
+    bindingNodeId: undefined,
+
+    generateViewModel: function () {
+      ko.applyBindings(this, $(this.bindingNodeId)[0]);
+    },
+
+    removeViewModel: function () {
+      ko.cleanNode($(this.bindingNodeId)[0]);
+    }
+  };
+
+  var MENU_TYPES = {
+    KILLS: 'kills',
+    STARS: 'stars',
+    WEAPONS: 'weapons',
+    VEHICLES: 'vehicles',
+    LOCATIONS: 'locations'
+  };
+
+  var menuVM = new ViewModel('#gameMenu');
+
+  function addMenuClick (menuType) {
+    menuVM[menuType + 'Open'] = function () {
+      openMenu(menuType);
+    };
+
+    menuVM[menuType + 'Close'] = function () {
+      closeMenu(menuType);
+    };
+
+    menuVM[menuType + 'IsOpen'] = ko.observable(false);
+  }
+
+  _.forEach(MENU_TYPES, function (type) {
+    addMenuClick(type);
+  });
+
+
+  function openMenu (menuType) {
+    var $btn = $('#menu-btn-' + menuType).parents('.menu-item');
+
+    if (!$btn.length) {
+      throw new Error('openMenu cannot find the menu-item for menuType ' + menuType);
+    }
+
+    if ($btn.hasClass('open')) {
+      return;
+    }
+
+    $btn.addClass('open');
+
+    $btn.find('.arrow')
+      .removeClass('fa-angle-right')
+      .addClass('fa-times');
+
+    menuVM[menuType + 'IsOpen'](true);
+  }
+
+  function closeMenu (menuType) {
+    if (!ko.unwrap(menuVM[menuType + 'IsOpen'])) {
+      openMenu(menuType);
+      return;
+    }
+
+    var $btn = $('#menu-btn-' + menuType).parents('.menu-item');
+
+    if (!$btn.length) {
+      throw new Error('openMenu cannot find the menu-item for menuType ' + menuType);
+    }
+
+    $btn.removeClass('open');
+
+    $btn.find('.arrow')
+      .removeClass('fa-times')
+      .addClass('fa-angle-right');
+
+    menuVM[menuType + 'IsOpen'](false);
+  }
+
+  menuVM.generateViewModel();
 });

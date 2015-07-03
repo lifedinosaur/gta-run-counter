@@ -8,7 +8,7 @@
 
 	<title>lifedinosaur.com - GTA Run Counter</title>
 
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700'
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'
 		rel='stylesheet' type='text/css'>
 	<link href="assets/css/custom.min.css" rel="stylesheet">
 
@@ -21,7 +21,7 @@
 
 <body>
 	<div class="container main">
-		<article>
+		<article class="run-counter">
 			<header>
 				<div class="date">
 					<p><span title="7/3" class="glyphicon glyphicon-barcode"
@@ -30,9 +30,87 @@
 				<div class="headline"><h3><small>GTA</small> Run Counter</h3></h3></div>
 			</header>
 
-			<section class="controller well">
+			<div class="controller well">
+				<section class="clock">
+					<h3>Game Clock</h3>
+					<div class="form-group">
+						<p class="form-control">00:00</p>
+					</div>
+				</section>
 
-			</section>
+				<hr />
+
+				<section id="gameMenu" class="menu">
+					<h3>Menu</h3>
+					<nav class="primary">
+						<div class="menu-item">
+							<button id="menu-btn-kills" class="btn btn-primary" type="button"
+								data-bind="click: killsOpen">
+								<span class="label-wrapper">
+									<span class="icon icon-emo-devil"></span>
+									<span class="label">Kills</span>
+								</span>
+								<span class="arrow fa fa-angle-right"
+									data-bind="click: killsClose, clickBubble: false"></span>
+							</button>
+						</div>
+
+						<div class="menu-item">
+							<button id="menu-btn-stars" class="btn btn-primary" type="button"
+								data-bind="click: starsOpen">
+								<span class="label-wrapper">
+									<span class="icon fa fa-star"></span>
+									<span class="label">Stars</span>
+								</span>
+								<span class="arrow fa fa-angle-right"
+									data-bind="click: starsClose, clickBubble: false"></span>
+							</button>
+						</div>
+
+						<div class="menu-item">
+							<button id="menu-btn-weapons" class="btn btn-primary" type="button"
+								data-bind="click: weaponsOpen">
+								<span class="label-wrapper">
+									<span class="icon icon-baseball"></span>
+									<span class="label">Weapons</span>
+								</span>
+								<span class="arrow fa fa-angle-right"
+									data-bind="click: weaponsClose, clickBubble: false"></span>
+							</button>
+						</div>
+
+						<div class="menu-item">
+							<button id="menu-btn-vehicles" class="btn btn-primary" type="button"
+								data-bind="click: vehiclesOpen">
+								<span class="label-wrapper">
+									<span class="icon icon-heliport"></span>
+									<span class="label">Vehicles</span>
+								</span>
+								<span class="arrow fa fa-angle-right"
+									data-bind="click: vehiclesClose, clickBubble: false"></span>
+							</button>
+						</div>
+
+						<div class="menu-item">
+							<button id="menu-btn-locations" class="btn btn-primary" type="button"
+								data-bind="click: locationsOpen">
+								<span class="label-wrapper">
+									<span class="icon icon-tree-1"></span>
+									<span class="label">Locations</span>
+								</span>
+								<span class="arrow fa fa-angle-right"
+									data-bind="click: locationsClose, clickBubble: false"></span>
+							</button>
+						</div>
+					</nav>
+				</section>
+
+				<section class="controls">
+				</section>
+
+				<section class="scores">
+				</section>
+			</div>
 
 			<section class="flags">
 				<div class="flag pull-right">

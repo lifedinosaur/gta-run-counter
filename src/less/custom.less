@@ -4,10 +4,10 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-@source: "../../bower_components/bootstrap/less/";
+@bootstrap: "../../bower_components/bootstrap/less/";
 
 // Core variables and mixins
-@import "@{source}variables.less";
+@import "@{bootstrap}variables.less";
 
 @brand-default: #999;
 @brand-primary: #009871;
@@ -22,58 +22,82 @@
 @fonts: 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
 @light-background: #ededed;
 @text-color: #333333;
+@input-border-focus: #009871;
 
-@import "@{source}mixins.less";
+@import "@{bootstrap}mixins.less";
 
 // Reset and dependencies
-@import "@{source}normalize.less";
-@import "@{source}print.less";
-@import "@{source}glyphicons.less";
+@import "@{bootstrap}normalize.less";
+@import "@{bootstrap}print.less";
+@import "@{bootstrap}glyphicons.less";
 
 // Core CSS
-@import "@{source}scaffolding.less";
-@import "@{source}type.less";
-@import "@{source}code.less";
-@import "@{source}grid.less";
-@import "@{source}tables.less";
-@import "@{source}forms.less";
-@import "@{source}buttons.less";
+@import "@{bootstrap}scaffolding.less";
+@import "@{bootstrap}type.less";
+@import "@{bootstrap}code.less";
+@import "@{bootstrap}grid.less";
+@import "@{bootstrap}tables.less";
+@import "@{bootstrap}forms.less";
+@import "@{bootstrap}buttons.less";
 
 // Components
-@import "@{source}component-animations.less";
-@import "@{source}dropdowns.less";
-@import "@{source}button-groups.less";
-@import "@{source}input-groups.less";
-@import "@{source}navs.less";
-@import "@{source}navbar.less";
-@import "@{source}breadcrumbs.less";
-@import "@{source}pagination.less";
-@import "@{source}pager.less";
-@import "@{source}labels.less";
-@import "@{source}badges.less";
-@import "@{source}jumbotron.less";
-@import "@{source}thumbnails.less";
-@import "@{source}alerts.less";
-@import "@{source}progress-bars.less";
-@import "@{source}media.less";
-@import "@{source}list-group.less";
-@import "@{source}panels.less";
-@import "@{source}responsive-embed.less";
-@import "@{source}wells.less";
-@import "@{source}close.less";
+@import "@{bootstrap}component-animations.less";
+@import "@{bootstrap}dropdowns.less";
+@import "@{bootstrap}button-groups.less";
+@import "@{bootstrap}input-groups.less";
+@import "@{bootstrap}navs.less";
+@import "@{bootstrap}navbar.less";
+@import "@{bootstrap}breadcrumbs.less";
+@import "@{bootstrap}pagination.less";
+@import "@{bootstrap}pager.less";
+@import "@{bootstrap}labels.less";
+@import "@{bootstrap}badges.less";
+@import "@{bootstrap}jumbotron.less";
+@import "@{bootstrap}thumbnails.less";
+@import "@{bootstrap}alerts.less";
+@import "@{bootstrap}progress-bars.less";
+@import "@{bootstrap}media.less";
+@import "@{bootstrap}list-group.less";
+@import "@{bootstrap}panels.less";
+@import "@{bootstrap}responsive-embed.less";
+@import "@{bootstrap}wells.less";
+@import "@{bootstrap}close.less";
 
 // Components w/ JavaScript
-@import "@{source}modals.less";
-@import "@{source}tooltip.less";
-@import "@{source}popovers.less";
-@import "@{source}carousel.less";
+@import "@{bootstrap}modals.less";
+@import "@{bootstrap}tooltip.less";
+@import "@{bootstrap}popovers.less";
+@import "@{bootstrap}carousel.less";
 
 // Utility classes
-@import "@{source}utilities.less";
-@import "@{source}responsive-utilities.less";
+@import "@{bootstrap}utilities.less";
+@import "@{bootstrap}responsive-utilities.less";
 
-// End Bootstrap
+/*!
+ *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
 
+@fontawesome: "../../bower_components/font-awesome/less/";
+
+@import "@{fontawesome}variables.less";
+@import "@{fontawesome}mixins.less";
+@import "@{fontawesome}path.less";
+@import "@{fontawesome}core.less";
+@import "@{fontawesome}larger.less";
+@import "@{fontawesome}fixed-width.less";
+@import "@{fontawesome}list.less";
+@import "@{fontawesome}bordered-pulled.less";
+@import "@{fontawesome}animated.less";
+@import "@{fontawesome}rotated-flipped.less";
+@import "@{fontawesome}stacked.less";
+@import "@{fontawesome}icons.less";
+
+
+// custom:
 
 @import "base.less";
-@import "counter.less";
+
+.run-counter {
+  @import "counter.less";
+}

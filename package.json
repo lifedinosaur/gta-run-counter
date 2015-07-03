@@ -36,5 +36,13 @@
     "grunt-volo": "0.0.2",
     "load-grunt-tasks": "~3.1.0",
     "time-grunt": "~1.1.0"
+  },
+  "volo": {
+    "baseDir": "./",
+    "baseUrl": "./",
+    "add": {
+      "fontelico": "fontello/fontelico.font/",
+      "maki": "fontello/maki.font/"
+    }
   }
 }

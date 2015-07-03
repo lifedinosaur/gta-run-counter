@@ -16,6 +16,7 @@
       "build": "dist/assets/",
       "css": "dist/assets/css/",
       "dist": "dist/",
+      "font": "dist/assets/font/",
       "fonts": "dist/assets/fonts/",
       "js": "dist/assets/js/",
       "lib": "dist/assets/js/lib/"
@@ -25,6 +26,7 @@
       "js": "src/js/",
       "less": "src/less/"
     },
-    "pkg": "bower_components/"
+    "pkg": "bower_components/",
+    "voloPkg": "packages/"
   }
 }
