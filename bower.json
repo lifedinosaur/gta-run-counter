@@ -1,0 +1,17 @@
+{
+  "name": "gta-run-counter",
+  "version": "0.1.0",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "dist",
+    "node_modules"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "jquery": "~1.11.2",
+    "knockout": "~3.3.0",
+    "lodash": "~3.5.0",
+    "requirejs-bower": "~2.1.16"
+  }
+}

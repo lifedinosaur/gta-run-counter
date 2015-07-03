@@ -1,0 +1,6 @@
+
+<%= exports %>
+
+}.call(root));
+    return amdExports;
+}); }(this));

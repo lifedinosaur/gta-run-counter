@@ -1,0 +1,40 @@
+{
+  "name": "GTA-Run-Counter",
+  "description": "A stats and gameplay app for Grand Theft Auto.",
+  "version": "0.1.0",
+  "homepage": "http://sdotbizzle.biz/counter",
+  "author": {
+    "name": "lifedinosaur",
+    "url": "http://lifedinosaur.com/"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lifedinosaur/gta-run-counter.git"
+  },
+  "scripts": {
+    "postinstall": "bower install"
+  },
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-autoprefixer": "~2.2.0",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-connect": "~0.9.0",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-contrib-jshint": "~0.11.0",
+    "grunt-contrib-less": "~1.0.0",
+    "grunt-contrib-qunit": "~0.5.2",
+    "grunt-contrib-requirejs": "~0.4.4",
+    "grunt-contrib-uglify": "~0.8.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-recess": "~1.0.1",
+    "grunt-volo": "0.0.2",
+    "load-grunt-tasks": "~3.1.0",
+    "time-grunt": "~1.1.0"
+  }
+}
