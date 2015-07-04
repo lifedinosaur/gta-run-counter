@@ -178,6 +178,7 @@ function ($, _, ko, TweenLite) {
     });
 
     TweenLite.to($btn[0], animTime, {
+      'borderRadius': '4px',
       'marginLeft': '0px',
       'paddingLeft': '0px'
     });
@@ -242,6 +243,7 @@ function ($, _, ko, TweenLite) {
     });
 
     TweenLite.to($btn[0], animTime, {
+      'borderRadius': '0px',
       'marginLeft': '-40px',
       'paddingLeft': '80px'
     });
