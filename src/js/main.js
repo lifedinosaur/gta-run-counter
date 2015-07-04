@@ -48,6 +48,7 @@ function ($, _, ko, TweenLite) {
     }
   };
 
+  var buttonHeight = 56;
 
   var MENU_TYPES = {
     KILLS: 'kills',
@@ -98,6 +99,47 @@ function ($, _, ko, TweenLite) {
     return open;
   }
 
+  function setMenuForAnim ($primary, $btn) {
+    $primary.css('height', $primary.outerHeight());
+
+    TweenLite.to($primary[0], animTime, {
+      onComplete: function () {
+        $primary.css('height', 'auto');
+      }
+    });
+
+
+    var after = false;
+    var set = [];
+    _.forEach(menuVM.buttons, function ($b, k) {
+      if ($b[0] == $btn[0]) {
+        after = true;
+        return;
+      }
+
+      if (!after) {
+        return;
+      }
+
+      var $i = $b.parents('.menu-item');
+
+      set.unshift($i);
+    });
+
+    _.forEach(set, function ($i, idx) {
+      var it = $i.position().top;
+
+      $i.css('top', it + 'px');
+      $i.addClass('animating');
+
+      TweenLite.to($i[0], animTime, {
+        onComplete: function () {
+          $i.removeClass('animating');
+        }
+      });
+    });
+  }
+
   function closeMenu (menuType) {
     var $btn = $('#menu-btn-' + menuType);
 
@@ -117,10 +159,14 @@ function ($, _, ko, TweenLite) {
 
     var $arrow = $btn.find('.arrow');
 
+    setMenuForAnim($primary, $btn);
+
+
     $item.removeClass('open');
     menuVM[menuType + 'IsOpen'](false);
 
-    var t = $item.position().top - 64;
+
+    var t = $item.position().top - buttonHeight;
 
     $item.addClass('animating');
 
@@ -133,26 +179,17 @@ function ($, _, ko, TweenLite) {
 
     TweenLite.to($btn[0], animTime, {
       'marginLeft': '0px',
-      'paddingLeft': '0px',
-      onComplete: function () {
-        $item.removeClass('animating');
-      }
+      'paddingLeft': '0px'
     });
 
     TweenLite.to($label[0], animTime, {
-      'marginLeft': '0px',
-      onComplete: function () {
-        $item.removeClass('animating');
-      }
+      'marginLeft': '0px'
     });
 
     TweenLite.to($arrow[0], animTime, {
       'fontSize': '1.2em',
       'rotation': 0,
-      'width': '2em',
-      onComplete: function () {
-        $item.removeClass('animating');
-      }
+      'width': '2em'
     });
 
     $btn.find('.arrow')
@@ -163,11 +200,11 @@ function ($, _, ko, TweenLite) {
 
     if (!open) {
       TweenLite.to($primary[0], animTime, {
-        'paddingTop': '0px',
-        onComplete: function () {
-          $item.removeClass('animating');
-        }
+        'paddingTop': '0px'
       });
+    }
+    else {
+      console.log('TODO: find any menu items above the item and push them up buttonHeight');
     }
   }
 
@@ -187,6 +224,9 @@ function ($, _, ko, TweenLite) {
     var $arrow = $btn.find('.arrow');
 
 
+    setMenuForAnim($primary, $btn);
+
+
     $item.css('top', $item.position().top);
 
     $item.addClass('open animating');
@@ -201,26 +241,17 @@ function ($, _, ko, TweenLite) {
 
     TweenLite.to($btn[0], animTime, {
       'marginLeft': '-40px',
-      'paddingLeft': '80px',
-      onComplete: function () {
-        $item.removeClass('animating');
-      }
+      'paddingLeft': '80px'
     });
 
     TweenLite.to($label[0], animTime, {
-      'marginLeft': '-120px',
-      onComplete: function () {
-        $item.removeClass('animating');
-      }
+      'marginLeft': '-120px'
     });
 
     TweenLite.to($arrow[0], animTime, {
       'fontSize': '0.9em',
       'rotation': 90,
-      'width': '5em',
-      onComplete: function () {
-        $item.removeClass('animating');
-      }
+      'width': '5em'
     });
 
     $btn.find('.arrow')
@@ -230,10 +261,7 @@ function ($, _, ko, TweenLite) {
     isMenuOpen($primary);
 
     TweenLite.to($primary[0], animTime, {
-      'paddingTop': '64px',
-      onComplete: function () {
-        $item.removeClass('animating');
-      }
+      'paddingTop': buttonHeight + 'px'
     });
   }
 
@@ -250,7 +278,7 @@ function ($, _, ko, TweenLite) {
 
     if (!open) {
       // close all others:
-      _.forEach(menuVM.buttons, function (v, k) {
+      _.forEach(menuVM.buttons, function ($b, k) {
         if (k == menuType) {
           return;
         }
