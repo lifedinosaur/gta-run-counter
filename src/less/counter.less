@@ -1,8 +1,6 @@
 @buttonHeight: 44px;
 @controllerMaxWidth: 350px;
 
-@menuAnimTime: 0.25s;
-
 .well {
   padding: 1.5em 20px;
 }
@@ -42,13 +40,9 @@
 
     > .menu-item {
       display: inline-block;
-      margin: 0.3em 0;
+      margin: 6px 0;
       width: 100%;
     }
-  }
-
-  .primary {
-    //border: 1px solid @brand-primary-dark;
   }
 
   .btn {
@@ -108,7 +102,8 @@
     }
   }
 
-  .menu-item.open {
+  .menu-item.open,
+  .menu-item.animating {
     left: 0;
     position: absolute;
     z-index: 200;
@@ -116,11 +111,6 @@
     .btn {
       background: @brand-primary;
       border-radius: 0;
-
-      .arrow {
-        font-size: 1em;
-        width: 5em;
-      }
     }
   }
 }

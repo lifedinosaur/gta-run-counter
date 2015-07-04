@@ -40,15 +40,18 @@ module.exports = function(grunt) {
     },
     {
       name: 'ColorPropsPlugin',
-      src: '<%= config.paths.dest.greensock %>'
+      src: '<%= config.paths.dest.greensock %>',
+      deps: ['greensock/gsap=TweenLite']
     },
     {
       name: 'CSSPlugin',
-      src: '<%= config.paths.dest.greensock %>'
+      src: '<%= config.paths.dest.greensock %>',
+      deps: ['greensock/gsap=TweenLite']
     },
     {
       name: 'EasePack',
-      src: '<%= config.paths.dest.greensock %>'
+      src: '<%= config.paths.dest.greensock %>',
+      deps: ['greensock/gsap=TweenLite']
     }
   ];
 

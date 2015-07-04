@@ -57,98 +57,212 @@ function ($, _, ko, TweenLite) {
     LOCATIONS: 'locations'
   };
 
+  var animTime = 0.35;
+
   var menuVM = new ViewModel('#gameMenu');
 
-  function addMenuClick (menuType) {
-    menuVM[menuType + 'Open'] = function () {
-      openMenu(menuType);
-    };
-
-    menuVM[menuType + 'IsOpen'] = ko.observable(false);
-  }
+  menuVM.open = ko.observableArray();
+  menuVM.buttons = {};
 
   _.forEach(MENU_TYPES, function (type) {
-    addMenuClick(type);
+    menuVM[type + 'Open'] = function () {
+      toggleMenu(type);
+    };
+
+    menuVM[type + 'IsOpen'] = ko.observable(false);
+    menuVM.open.push(menuVM[type + 'IsOpen']);
+
+    menuVM.buttons[type] = $('#menu-btn-' + type);
   });
 
+
+
+  function isMenuOpen (p) {
+    var open = false;
+
+    _.forEach(menuVM.open(), function (v, k) {
+      if (open) {
+        return;
+      }
+
+      open = v();
+    });
+
+    if (open) {
+      p.addClass('open');
+    }
+    else {
+      p.removeClass('open');
+    }
+
+    return open;
+  }
+
+  function closeMenu (menuType) {
+    var $btn = $('#menu-btn-' + menuType);
+
+    if (!$btn.length) {
+      throw new Error('toggleMenu cannot find the button for menuType ' + menuType);
+    }
+
+    var $item = $btn.parents('.menu-item');
+
+    if (!$item.hasClass('open')) {
+      return;
+    }
+
+    var $primary = $item.parents('.primary');
+
+    var $label = $btn.find('.label-wrapper');
+
+    var $arrow = $btn.find('.arrow');
+
+    $item.removeClass('open');
+    menuVM[menuType + 'IsOpen'](false);
+
+    var t = $item.position().top - 64;
+
+    $item.addClass('animating');
+
+    TweenLite.to($item[0], animTime, {
+      'top': t,
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+
+    TweenLite.to($btn[0], animTime, {
+      'marginLeft': '0px',
+      'paddingLeft': '0px',
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+
+    TweenLite.to($label[0], animTime, {
+      'marginLeft': '0px',
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+
+    TweenLite.to($arrow[0], animTime, {
+      'fontSize': '1.2em',
+      'rotation': 0,
+      'width': '2em',
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+
+    $btn.find('.arrow')
+      .removeClass('fa-times')
+      .addClass('fa-angle-right');
+
+    var open = isMenuOpen($primary);
+
+    if (!open) {
+      TweenLite.to($primary[0], animTime, {
+        'paddingTop': '0px',
+        onComplete: function () {
+          $item.removeClass('animating');
+        }
+      });
+    }
+  }
 
   function openMenu (menuType) {
     var $btn = $('#menu-btn-' + menuType);
 
     if (!$btn.length) {
-      throw new Error('openMenu cannot find the button for menuType ' + menuType);
+      throw new Error('toggleMenu cannot find the button for menuType ' + menuType);
     }
 
-    var animTime = 0.35;
-
     var $item = $btn.parents('.menu-item');
+
+    var $primary = $item.parents('.primary');
 
     var $label = $btn.find('.label-wrapper');
 
     var $arrow = $btn.find('.arrow');
 
 
+    $item.css('top', $item.position().top);
+
+    $item.addClass('open animating');
+    menuVM[menuType + 'IsOpen'](true);
+
+    TweenLite.to($item[0], animTime, {
+      'top': 0,
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+
+    TweenLite.to($btn[0], animTime, {
+      'marginLeft': '-40px',
+      'paddingLeft': '80px',
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+
+    TweenLite.to($label[0], animTime, {
+      'marginLeft': '-120px',
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+
+    TweenLite.to($arrow[0], animTime, {
+      'fontSize': '0.9em',
+      'rotation': 90,
+      'width': '5em',
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+
+    $btn.find('.arrow')
+      .removeClass('fa-angle-right')
+      .addClass('fa-times');
+
+    isMenuOpen($primary);
+
+    TweenLite.to($primary[0], animTime, {
+      'paddingTop': '64px',
+      onComplete: function () {
+        $item.removeClass('animating');
+      }
+    });
+  }
+
+  function toggleMenu (menuType) {
+    var $btn = $('#menu-btn-' + menuType);
+
+    if (!$btn.length) {
+      throw new Error('toggleMenu cannot find the button for menuType ' + menuType);
+    }
+
+    var $item = $btn.parents('.menu-item');
+
     var open = $item.hasClass('open');
 
     if (!open) {
-      $item.css('top', $item.position().top);
+      // close all others:
+      _.forEach(menuVM.buttons, function (v, k) {
+        if (k == menuType) {
+          return;
+        }
 
-      $item.addClass('open');
-
-      TweenLite.to($item[0], animTime, {
-        'top': 0
+        closeMenu(k);
       });
 
-      TweenLite.to($btn[0], animTime, {
-        'marginLeft': '-40px',
-        'paddingLeft': '80px'
-      });
-
-      TweenLite.to($label[0], animTime, {
-        'marginLeft': '-120px'
-      });
-
-      TweenLite.to($arrow[0], animTime, {
-        'rotation': 90
-      });
-
-      $btn.find('.arrow')
-        .removeClass('fa-angle-right')
-        .addClass('fa-times');
+      openMenu(menuType);
     }
     else {
-      $item.removeClass('open');
-
-      var t = $item.position().top;
-
-      $item.addClass('open');
-
-      TweenLite.to($item[0], animTime, {
-        'top': t,
-        onComplete: function () {
-          $item.removeClass('open');
-        }
-      });
-
-      TweenLite.to($btn[0], animTime, {
-        'marginLeft': '0px',
-        'paddingLeft': '0px'
-      });
-
-      TweenLite.to($label[0], animTime, {
-        'marginLeft': '0px'
-      });
-
-      TweenLite.to($arrow[0], animTime, {
-        'rotation': 0
-      });
-
-      $btn.find('.arrow')
-        .removeClass('fa-times')
-        .addClass('fa-angle-right');
+      closeMenu(menuType);
     }
-
-    menuVM[menuType + 'IsOpen'](open);
   }
 
   menuVM.generateViewModel();
