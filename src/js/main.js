@@ -209,6 +209,8 @@ function ($, _, ko, TweenLite) {
   }
 
   function openMenu (menuType) {
+    console.log('open menu', menuType);
+
     var $btn = $('#menu-btn-' + menuType);
 
     if (!$btn.length) {

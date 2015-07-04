@@ -99,13 +99,12 @@ module.exports = function(grunt) {
     },
 
     concat: {
-      css: {
+      /*css: {
         src: [
-          '<%= config.paths.dest.css %>' + 'custom.min.css',
-          '<%= config.paths.manualPkg %>' + 'fontello/css/fontello.css'
+          '<%= config.paths.dest.css %>' + 'custom.min.css'
         ],
         dest: '<%= config.paths.dest.css %>' + 'custom.min.css'
-      },
+      },*/
     },
 
     connect: {
@@ -141,6 +140,11 @@ module.exports = function(grunt) {
           expand: true,
           flatten: true,
           src: '<%= config.paths.manualPkg %>' + 'fontello/font/*',
+          dest: '<%= config.paths.dest.font %>'
+        }, {
+          expand: true,
+          flatten: true,
+          src: '<%= config.paths.manualPkg %>' + 'elusive/font/*',
           dest: '<%= config.paths.dest.font %>'
         }]
       },
@@ -398,7 +402,7 @@ module.exports = function(grunt) {
     'clean:css',
     'less:compile',
     'autoprefixer:compile',
-    'concat:css',
+    //'concat:css',
     'recess:validate'
   ]);
 
