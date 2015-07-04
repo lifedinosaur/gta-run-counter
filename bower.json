@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap": "~3.3.4",
     "font-awesome": "~4.3.0",
+    "gsap": "~1.17.0",
     "jquery": "~1.11.2",
     "knockout": "~3.3.0",
     "lodash": "~3.5.0",

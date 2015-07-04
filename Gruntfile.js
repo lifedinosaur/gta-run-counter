@@ -32,6 +32,23 @@ module.exports = function(grunt) {
       name: 'transition',
       src: '<%= config.paths.dest.bootstrap %>',
       deps: ['jquery=$']
+    },
+    {
+      name: 'TweenLite',
+      src: '<%= config.paths.dest.greensock %>',
+      exports: 'window.TweenLite'
+    },
+    {
+      name: 'ColorPropsPlugin',
+      src: '<%= config.paths.dest.greensock %>'
+    },
+    {
+      name: 'CSSPlugin',
+      src: '<%= config.paths.dest.greensock %>'
+    },
+    {
+      name: 'EasePack',
+      src: '<%= config.paths.dest.greensock %>'
     }
   ];
 
@@ -82,7 +99,7 @@ module.exports = function(grunt) {
       css: {
         src: [
           '<%= config.paths.dest.css %>' + 'custom.min.css',
-          '<%= config.paths.voloPkg %>' + 'fontello/css/fontello.css'
+          '<%= config.paths.manualPkg %>' + 'fontello/css/fontello.css'
         ],
         dest: '<%= config.paths.dest.css %>' + 'custom.min.css'
       },
@@ -120,8 +137,21 @@ module.exports = function(grunt) {
         }, {
           expand: true,
           flatten: true,
-          src: '<%= config.paths.voloPkg %>' + 'fontello/font/*',
+          src: '<%= config.paths.manualPkg %>' + 'fontello/font/*',
           dest: '<%= config.paths.dest.font %>'
+        }]
+      },
+      greensock: {
+        files: [{
+          expand: true,
+          flatten: true,
+          src: [
+            '<%= config.paths.pkg %>' + 'gsap/src/uncompressed/TweenLite.js',
+            '<%= config.paths.pkg %>' + 'gsap/src/uncompressed/easing/EasePack.js',
+            '<%= config.paths.pkg %>' + 'gsap/src/uncompressed/Plugins/ColorPropsPlugin.js',
+            '<%= config.paths.pkg %>' + 'gsap/src/uncompressed/Plugins/CSSPlugin.js'
+          ],
+          dest: '<%= config.paths.dest.greensock %>'
         }]
       },
       html: {
@@ -353,6 +383,7 @@ module.exports = function(grunt) {
   grunt.registerTask('copy:libs', [
     'copy:bootstrap',
     'copy:fonts',
+    'copy:greensock',
     'copy:jquery',
     'copy:knockout',
     'copy:lodash',

@@ -18,6 +18,7 @@
       "dist": "dist/",
       "font": "dist/assets/font/",
       "fonts": "dist/assets/fonts/",
+      "greensock": "dist/assets/js/lib/greensock/",
       "js": "dist/assets/js/",
       "lib": "dist/assets/js/lib/"
     },
@@ -27,6 +28,6 @@
       "less": "src/less/"
     },
     "pkg": "bower_components/",
-    "voloPkg": "packages/"
+    "manualPkg": "packages/"
   }
 }
