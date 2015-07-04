@@ -101,8 +101,7 @@ function ($, _, ko, TweenLite) {
 
       TweenLite.to($btn[0], animTime, {
         'marginLeft': '-40px',
-        'paddingLeft': '80px',
-        'paddingRight': '100%'
+        'paddingLeft': '80px'
       });
 
       TweenLite.to($label[0], animTime, {
@@ -133,8 +132,7 @@ function ($, _, ko, TweenLite) {
 
       TweenLite.to($btn[0], animTime, {
         'marginLeft': '0px',
-        'paddingLeft': '0px',
-        'paddingRight': '0%'
+        'paddingLeft': '0px'
       });
 
       TweenLite.to($label[0], animTime, {
