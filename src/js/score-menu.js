@@ -119,7 +119,15 @@ function ($, _, ko, TweenLite, ViewModel) {
     },
 
     isMenuOpen: function (p) {
-      var open = _.every(this.open);
+      var open = false;
+
+      _.forEach(this.open, function (v, k) {
+        if (open) {
+          return;
+        }
+
+        open = v;
+      });
 
       if (open) {
         p.addClass('open');
