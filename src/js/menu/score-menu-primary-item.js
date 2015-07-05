@@ -118,7 +118,7 @@ function ($, _) {
 
       TweenLite.to(this.$btn[0], time, {
         'borderRadius': '0px',
-        'marginLeft': '-40px',
+        'marginLeft': '-41px',
         'paddingLeft': '80px'
       });
 
@@ -141,8 +141,8 @@ function ($, _) {
 
       TweenLite.to(this.$secondary[0], time, {
         'height': h,
-        'marginLeft': '-40px',
-        'marginRight': '-40px',
+        'marginLeft': '-41px',
+        'marginRight': '-41px',
         onComplete: function () {
           self.$secondary.css('height', 'auto');
         }

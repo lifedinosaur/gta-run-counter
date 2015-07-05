@@ -79,7 +79,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
       this.setMenuOpen();
 
       TweenLite.to(this.$primary[0], ANIM_TIME, {
-        'paddingTop': '0px'
+        'paddingTop': 14 + 'px'
       });
     },
 
@@ -95,7 +95,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
       this.setMenuOpen();
 
       TweenLite.to(this.$primary[0], ANIM_TIME, {
-        'paddingTop': BUTTON_HEIGHT + 'px'
+        'paddingTop': (BUTTON_HEIGHT + 14) + 'px'
       });
     },
 
