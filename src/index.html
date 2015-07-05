@@ -45,7 +45,7 @@
 					<div class="primary">
 						<div class="menu-item">
 							<button id="menu-btn-kills" class="btn btn-primary" type="button"
-								data-bind="click: killsOpen">
+								data-bind="click: toggleMenu.bind($data, 'kills')">
 								<span class="label-wrapper">
 									<span class="icon fi-skull"></span>
 									<span class="label">Kills</span>
@@ -87,7 +87,7 @@
 
 						<div class="menu-item">
 							<button id="menu-btn-stars" class="btn btn-primary" type="button"
-								data-bind="click: starsOpen">
+								data-bind="click: toggleMenu.bind($data, 'stars')">
 								<span class="label-wrapper">
 									<span class="icon fa fa-star"></span>
 									<span class="label">Stars</span>
@@ -108,7 +108,7 @@
 
 						<div class="menu-item">
 							<button id="menu-btn-weapons" class="btn btn-primary" type="button"
-								data-bind="click: weaponsOpen">
+								data-bind="click: toggleMenu.bind($data, 'weapons')">
 								<span class="label-wrapper">
 									<span class="icon icon-baseball"></span>
 									<span class="label">Weapons</span>
@@ -129,7 +129,7 @@
 
 						<div class="menu-item">
 							<button id="menu-btn-vehicles" class="btn btn-primary" type="button"
-								data-bind="click: vehiclesOpen">
+								data-bind="click: toggleMenu.bind($data, 'vehicles')">
 								<span class="label-wrapper">
 									<span class="icon icon-heliport"></span>
 									<span class="label">Vehicles</span>
@@ -150,7 +150,7 @@
 
 						<div class="menu-item">
 							<button id="menu-btn-locations" class="btn btn-primary" type="button"
-								data-bind="click: locationsOpen">
+								data-bind="click: toggleMenu.bind($data, 'locations')">
 								<span class="label-wrapper">
 									<span class="icon icon-tree-1"></span>
 									<span class="label">Locations</span>
