@@ -4,8 +4,8 @@ define(
   'lodash',
   'knockout',
   'greensock/gsap',
-  'view-model',
-  'score-menu-primary-item'
+  'core/view-model',
+  'menu/score-menu-primary-item'
 ],
 function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
   'use strict';

@@ -15,7 +15,7 @@ define(
 [
   'jquery',
   'lodash',
-  'score-menu'
+  'menu/score-menu'
 ],
 function ($, _, ScoreMenu) {
   'use strict';
