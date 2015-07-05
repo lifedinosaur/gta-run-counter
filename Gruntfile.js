@@ -146,6 +146,11 @@ module.exports = function(grunt) {
           flatten: true,
           src: '<%= config.paths.manualPkg %>' + 'elusive/font/*',
           dest: '<%= config.paths.dest.font %>'
+        }, {
+          expand: true,
+          flatten: true,
+          src: '<%= config.paths.manualPkg %>' + 'foundation-icons/font/*',
+          dest: '<%= config.paths.dest.font %>'
         }]
       },
       greensock: {
