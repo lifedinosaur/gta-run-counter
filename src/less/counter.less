@@ -36,6 +36,7 @@
     padding: 0;
     position: relative;
     //max-width: @controllerMaxWidth;
+    z-index: 10;
 
     > .menu-item {
       display: inline-block;
@@ -55,13 +56,18 @@
   }
 
   .secondary {
+    background: #fefefe;
+    display: none;
     height: 0;
     overflow: hidden;
-    width: 100%;
 
-    > .menu-item {
+    .menu-wrap {
+      padding: 30px;
+      width: 100%;
+    }
+
+    .menu-wrap > .menu-item {
       display: inline-block;
-      loat: left;
     }
   }
 
@@ -117,21 +123,23 @@
     }
   }
 
-  .primary > .menu-item.open {
-    z-index: 200;
-
-    .secondary {
-      height: auto;
-    }
-  }
-
+  .primary > .menu-item.fixing,
   .primary > .menu-item.open,
   .primary > .menu-item.animating {
     left: 0;
     position: absolute;
+  }
+
+  .primary > .menu-item.open,
+  .primary > .menu-item.animating {
+    z-index: 200;
 
     > .btn {
       background: @brand-primary;
+    }
+
+    .secondary {
+      display: block;
     }
   }
 }

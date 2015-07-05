@@ -20,6 +20,8 @@ function ($, _) {
     this.$label = this.$btn.find('.label-wrapper');
 
     this.$arrow = this.$btn.find('.arrow');
+
+    this.$secondary = this.$item.find('.secondary');
   }
 
   ScoreMenuPrimaryItem.prototype = {
@@ -32,6 +34,8 @@ function ($, _) {
     $item: null,
 
     $label: null,
+
+    $secondary: null,
 
     menuType: undefined,
 
@@ -72,6 +76,12 @@ function ($, _) {
 
       this.$arrow.removeClass('fa-times')
         .addClass('fa-angle-right');
+
+      TweenLite.to(this.$secondary[0], time, {
+        'height': '0px',
+        'marginLeft': '0px',
+        'marginRight': '0px'
+      });
     },
 
     fixPosition: function (time) {
@@ -79,11 +89,11 @@ function ($, _) {
       var it = this.$item.position().top;
 
       this.$item.css('top', it + 'px');
-      this.$item.addClass('animating');
+      this.$item.addClass('fixing');
 
       TweenLite.to(this.$item[0], time, {
         onComplete: function () {
-          self.$item.removeClass('animating');
+          self.$item.removeClass('fixing');
         }
       });
     },
@@ -124,6 +134,19 @@ function ($, _) {
 
       this.$arrow.removeClass('fa-angle-right')
         .addClass('fa-times');
+
+      this.$secondary.css('height', 'auto');
+      var h = this.$secondary.outerHeight();
+      this.$secondary.css('height', '0px');
+
+      TweenLite.to(this.$secondary[0], time, {
+        'height': h,
+        'marginLeft': '-40px',
+        'marginRight': '-40px',
+        onComplete: function () {
+          self.$secondary.css('height', 'auto');
+        }
+      });
     }
   };
 
