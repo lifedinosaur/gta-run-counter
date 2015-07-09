@@ -22,6 +22,8 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
   var ANIM_TIME = 0.35;
 
+  var MENU_OFFSET = 14;
+
 
   function ScoreMenu (targetNodeId) {
     ViewModel.call(this, targetNodeId);
@@ -53,6 +55,8 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
     $primary: null,
 
+    primaryTween: null,
+
     closeAllMenus: function (exceptType) {
       _.forEach(this.buttons, function ($btn, key) {
         if (key == exceptType) {
@@ -64,11 +68,18 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
     },
 
     closeMenu: function (menuType) {
+      if (this.isAnimating()) {
+        return;
+      }
+
+      var self = this;
       var item = this.buttons[menuType];
 
       if (!item.isOpen()) {
         return;
       }
+
+      this.$primary.addClass('animating');
 
       this.setMenuForAnim(item);
 
@@ -78,24 +89,11 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
       this.setMenuOpen();
 
-      TweenLite.to(this.$primary[0], ANIM_TIME, {
-        'paddingTop': 14 + 'px'
-      });
-    },
-
-    openMenu: function (menuType) {
-      var item = this.buttons[menuType];
-
-      this.setMenuForAnim(item);
-
-      item.openItem(ANIM_TIME);
-
-      this.open[menuType] = true;
-
-      this.setMenuOpen();
-
-      TweenLite.to(this.$primary[0], ANIM_TIME, {
-        'paddingTop': (BUTTON_HEIGHT + 14) + 'px'
+      this.primaryTween = TweenLite.to(this.$primary[0], ANIM_TIME, {
+        'paddingTop': MENU_OFFSET + 'px',
+        onComplete: function () {
+          self.$primary.removeClass('animating');
+        }
       });
     },
 
@@ -107,6 +105,51 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
       TweenLite.to(this.$primary[0], time, {
         onComplete: function () {
           self.$primary.css('height', 'auto');
+        }
+      });
+    },
+
+    isAnimating: function () {
+      return this.$primary.hasClass('animating');
+    },
+
+    isOpen: function () {
+      return this.$primary.hasClass('open');
+    },
+
+    killAnims: function () {
+      if (!this.isAnimating()) {
+        return;
+      }
+
+      this.primaryTween.kill();
+
+      this.$primary.removeClass('animating');
+      this.$primary.css('height', 'auto');
+    },
+
+    openMenu: function (menuType) {
+      if (this.isAnimating()) {
+        return;
+      }
+
+      var self = this;
+      var item = this.buttons[menuType];
+
+      this.$primary.addClass('animating');
+
+      this.setMenuForAnim(item);
+
+      item.openItem(ANIM_TIME);
+
+      this.open[menuType] = true;
+
+      this.setMenuOpen();
+
+      this.primaryTween = TweenLite.to(this.$primary[0], ANIM_TIME, {
+        'paddingTop': (BUTTON_HEIGHT + MENU_OFFSET) + 'px',
+        onComplete: function () {
+          self.$primary.removeClass('animating');
         }
       });
     },
@@ -159,7 +202,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
     toggleMenu: function (menuType) {
       var open = this.buttons[menuType].isOpen();
 
-      if (!open) {
+      if (!open && !this.isOpen()) {
         this.closeAllMenus(menuType);
 
         this.openMenu(menuType);

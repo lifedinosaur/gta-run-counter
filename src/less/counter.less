@@ -5,6 +5,10 @@
   padding: 1.5em 20px;
 }
 
+.col-xs-3 {
+  width: 50%;
+}
+
 .controller {
   section {
     text-align: center;
@@ -64,17 +68,54 @@
     overflow: hidden;
 
     .menu-wrap {
-      padding: 30px;
+      padding: 15px 23px;
       width: 100%;
     }
 
-    .menu-wrap > .menu-item {
-      display: inline-block;
+    .menu-item {
+      margin-bottom: 10px;
+      width: 100%;
+
+      > .btn {
+        width: 100%;
+      }
+    }
+
+    .menu-group {
+      header {
+        margin-bottom: 23px;
+      }
+
+      .group-title,
+      .group-icon {
+        line-height: 34px;
+        margin: 0;
+      }
+
+      .group-title {
+        float: left;
+      }
+
+      .group-icon {
+        border-left: 1px solid @text-color;
+        margin-left: 18px;
+        padding-left: 14px;
+
+        &:before {
+          font-size: 1.2em;
+        }
+      }
+
+      .group-counter {
+        float: right;
+        margin: 0;
+        max-width: 120px;
+      }
     }
   }
 
   .btn {
-    font-size: 1em;
+    font-size: 1.2em;
     height: @buttonHeight;
     margin: 0;
     outline: 0;
@@ -92,19 +133,22 @@
     .label-wrapper {
       margin: 0;
       padding: 0 0.6em;
-      width: 100%;
     }
 
     .icon {
       background: #fff;
       border: 1px solid @brand-primary-dark;
-      border-radius: 14px;
+      border-radius: 16px;
       color: @brand-primary-dark;
-      font-size: 14px;
-      height: 28px;
-      line-height: 28px;
+      font-size: 20px;
+      height: 32px;
+      line-height: 32px;
       text-align: center;
-      width: 28px;
+      width: 32px;
+
+      &:before {
+        font-size: 20px;
+      }
     }
 
     .label {
@@ -146,10 +190,8 @@
   }
 }
 
-@media (min-width: @screen-xs-min) {
-  .menu {
-    .btn {
-      font-size: 1.2em;
-    }
+@media (min-width: @screen-sm-min) {
+  .col-xs-3 {
+    width: 25%;
   }
 }

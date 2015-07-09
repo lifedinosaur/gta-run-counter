@@ -37,6 +37,16 @@ function ($, _) {
 
     $secondary: null,
 
+    arrowTween: null,
+
+    btnTween: null,
+
+    itemTween: null,
+
+    labelTween: null,
+
+    secondaryTween: null,
+
     menuType: undefined,
 
     selectorPrefix: '#menu-btn-',
@@ -44,31 +54,36 @@ function ($, _) {
     targetNodeId: undefined,
 
     closeItem: function (time, btnHeight) {
+      if (this.isAnimating()) {
+        return;
+      }
+
       var self = this;
+
       this.$item.removeClass('open');
 
       var t = this.$item.position().top - btnHeight;
 
       this.$item.addClass('animating');
 
-      TweenLite.to(this.$item[0], time, {
+      this.itemTween = TweenLite.to(this.$item[0], time, {
         'top': t,
         onComplete: function () {
           self.$item.removeClass('animating');
         }
       });
 
-      TweenLite.to(this.$btn[0], time, {
+      this.btnTween = TweenLite.to(this.$btn[0], time, {
         'borderRadius': '4px',
         'marginLeft': '0px',
         'paddingLeft': '0px'
       });
 
-      TweenLite.to(this.$label[0], time, {
+      this.labelTween = TweenLite.to(this.$label[0], time, {
         'marginLeft': '0px'
       });
 
-      TweenLite.to(this.$arrow[0], time, {
+      this.arrowTween = TweenLite.to(this.$arrow[0], time, {
         'fontSize': '1.2em',
         'rotation': 0,
         'width': '2em'
@@ -77,7 +92,7 @@ function ($, _) {
       this.$arrow.removeClass('fa-times')
         .addClass('fa-angle-right');
 
-      TweenLite.to(this.$secondary[0], time, {
+      this.secondaryTween = TweenLite.to(this.$secondary[0], time, {
         'height': '0px',
         'marginLeft': '0px',
         'marginRight': '0px'
@@ -91,11 +106,30 @@ function ($, _) {
       this.$item.css('top', it + 'px');
       this.$item.addClass('fixing');
 
-      TweenLite.to(this.$item[0], time, {
+      this.itemTween = TweenLite.to(this.$item[0], time, {
         onComplete: function () {
           self.$item.removeClass('fixing');
         }
       });
+    },
+
+    killAnims: function () {
+      if (!this.isAnimating()) {
+        return;
+      }
+
+      this.itemTween.kill();
+      this.btnTween.kill();
+      this.labelTween.kill();
+      this.arrowTween.kill();
+      this.secondaryTween.kill();
+
+      this.$item.removeClass('animating');
+      this.$secondary.css('height', 'auto');
+    },
+
+    isAnimating: function () {
+      return this.$item.hasClass('animating');
     },
 
     isOpen: function () {
@@ -103,33 +137,38 @@ function ($, _) {
     },
 
     openItem: function (time) {
+      if (this.isAnimating()) {
+        return;
+      }
+
       var self = this;
 
       this.$item.css('top', this.$item.position().top);
 
       this.$item.addClass('open animating');
 
-      TweenLite.to(this.$item[0], time, {
+      this.itemTween = TweenLite.to(this.$item[0], time, {
         'top': 0,
         onComplete: function () {
           self.$item.removeClass('animating');
+          self.$secondary.css('height', 'auto');
         }
       });
 
-      TweenLite.to(this.$btn[0], time, {
+      this.btnTween = TweenLite.to(this.$btn[0], time, {
         'borderRadius': '0px',
         'marginLeft': '-41px',
         'paddingLeft': '80px'
       });
 
-      TweenLite.to(this.$label[0], time, {
-        'marginLeft': '-120px'
+      this.labelTween = TweenLite.to(this.$label[0], time, {
+        'marginLeft': '-70px'
       });
 
-      TweenLite.to(this.$arrow[0], time, {
+      this.arrowTween = TweenLite.to(this.$arrow[0], time, {
         'fontSize': '0.9em',
         'rotation': 90,
-        'width': '5em'
+        'width': '4em'
       });
 
       this.$arrow.removeClass('fa-angle-right')
@@ -139,13 +178,10 @@ function ($, _) {
       var h = this.$secondary.outerHeight();
       this.$secondary.css('height', '0px');
 
-      TweenLite.to(this.$secondary[0], time, {
+      this.secondaryTween = TweenLite.to(this.$secondary[0], time, {
         'height': h,
         'marginLeft': '-41px',
-        'marginRight': '-41px',
-        onComplete: function () {
-          self.$secondary.css('height', 'auto');
-        }
+        'marginRight': '-41px'
       });
     }
   };
