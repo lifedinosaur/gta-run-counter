@@ -21,4 +21,10 @@ function ($, _, ScoreMenu) {
   'use strict';
 
   var scoreMenu = new ScoreMenu('#gameMenu');
+
+  var windowResized = _.debounce(function () {
+    $(document).trigger('resize.counter');
+  }, 17);
+
+  $(window).resize(windowResized);
 });

@@ -67,10 +67,7 @@ function ($, _) {
       this.$item.addClass('animating');
 
       this.itemTween = TweenLite.to(this.$item[0], time, {
-        'top': t,
-        onComplete: function () {
-          self.$item.removeClass('animating');
-        }
+        'top': t
       });
 
       this.btnTween = TweenLite.to(this.$btn[0], time, {
@@ -97,6 +94,11 @@ function ($, _) {
         'marginLeft': '0px',
         'marginRight': '0px'
       });
+
+      TweenLite.delayedCall(time, function () {
+        self.$item.removeClass('animating');
+        self.$secondary.css('height', 'auto');
+      });
     },
 
     fixPosition: function (time) {
@@ -106,10 +108,8 @@ function ($, _) {
       this.$item.css('top', it + 'px');
       this.$item.addClass('fixing');
 
-      this.itemTween = TweenLite.to(this.$item[0], time, {
-        onComplete: function () {
-          self.$item.removeClass('fixing');
-        }
+      TweenLite.delayedCall(time, function () {
+        self.$item.removeClass('fixing');
       });
     },
 
@@ -148,11 +148,7 @@ function ($, _) {
       this.$item.addClass('open animating');
 
       this.itemTween = TweenLite.to(this.$item[0], time, {
-        'top': 0,
-        onComplete: function () {
-          self.$item.removeClass('animating');
-          self.$secondary.css('height', 'auto');
-        }
+        'top': 0
       });
 
       this.btnTween = TweenLite.to(this.$btn[0], time, {
@@ -182,6 +178,11 @@ function ($, _) {
         'height': h,
         'marginLeft': '-41px',
         'marginRight': '-41px'
+      });
+
+      TweenLite.delayedCall(time, function () {
+        self.$item.removeClass('animating');
+        self.$secondary.css('height', 'auto');
       });
     }
   };
