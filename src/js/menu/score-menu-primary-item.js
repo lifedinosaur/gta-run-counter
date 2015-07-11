@@ -51,6 +51,8 @@ function ($, _) {
 
     selectorPrefix: '#menu-btn-',
 
+    secondaryTargetHeight: 0,
+
     targetNodeId: undefined,
 
     closeItem: function (time, btnHeight) {
@@ -89,8 +91,10 @@ function ($, _) {
       this.$arrow.removeClass('fa-times')
         .addClass('fa-angle-right');
 
+      this.secondaryTargetHeight = 0;
+
       this.secondaryTween = TweenLite.to(this.$secondary[0], time, {
-        'height': '0px',
+        'height': this.secondaryTargetHeight + 'px',
         'marginLeft': '0px',
         'marginRight': '0px'
       });
@@ -171,11 +175,11 @@ function ($, _) {
         .addClass('fa-times');
 
       this.$secondary.css('height', 'auto');
-      var h = this.$secondary.outerHeight();
+      this.secondaryTargetHeight = this.$secondary.outerHeight();
       this.$secondary.css('height', '0px');
 
       this.secondaryTween = TweenLite.to(this.$secondary[0], time, {
-        'height': h,
+        'height': this.secondaryTargetHeight + 'px',
         'marginLeft': '-41px',
         'marginRight': '-41px'
       });

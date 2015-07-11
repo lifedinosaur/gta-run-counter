@@ -55,55 +55,36 @@
 
 							<div class="secondary">
 								<div class="menu-wrap">
-									<div class="kills menu-group">
-										<header>
-											<div class="row">
-												<div class="col-xs-6">
-													<h4 class="group-title">Civilians<span class="group-icon icon-el-adult"></span></h4>
-												</div>
-												<div class="col-xs-6">
-													<p class="group-counter form-control">0</p>
-												</div>
-										</header>
-										<div class="row">
-											<div class="col-xs-3">
-												<div class="menu-item">
-													<button id="kills-btn-civ-fist" class="btn btn-primary" type="button">
-														<span class="label-wrapper">
-															<span class="icon icon-baseball"></span>
-														</span>
-													</button>
-												</div>
-											</div>
-											<div class="col-xs-3">
-												<div class="menu-item">
-													<button id="kills-btn-civ-gun" class="btn btn-primary" type="button">
-														<span class="label-wrapper">
-															<span class="icon icon-el-target"></span>
-														</span>
-													</button>
-												</div>
-											</div>
-											<div class="col-xs-3">
-												<div class="menu-item">
-													<button id="kills-btn-civ-fire" class="btn btn-primary" type="button">
-														<span class="label-wrapper">
-															<span class="icon icon-fire-station"></span>
-														</span>
-													</button>
-												</div>
-											</div>
-											<div class="col-xs-3">
-												<div class="menu-item">
-													<button id="kills-btn-civ-auto" class="btn btn-primary" type="button">
-														<span class="label-wrapper">
-															<span class="icon icon-bus"></span>
-														</span>
-													</button>
+									<div data-bind="template: { name: 'kills-menu-group-template', data: killsMenu }"></div>
+
+									<script type="text/html" id="kills-menu-group-template">
+										<div data-bind="foreach: groups">
+											<div data-bind="attr: { id: groupId }" class="kills menu-group">
+												<header>
+													<div class="row">
+														<div class="col-xs-6">
+															<h4 class="group-title">
+																<span data-bind="text: title"></span><span class="group-icon" data-bind="css: icon"></span>
+															</h4>
+														</div>
+														<div class="col-xs-6">
+															<p class="group-counter form-control">0</p>
+														</div>
+												</header>
+												<div class="row" data-bind="foreach: $parent.buttons">
+													<div class="col-xs-3">
+														<div class="menu-item">
+															<button data-bind="attr: { id: idPrefix + $parent.id + id }" class="btn btn-primary" type="button">
+																<span class="label-wrapper">
+																	<span class="icon" data-bind="css: icon"></span>
+																</span>
+															</button>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</script>
 								</div>
 							</div>
 						</div>

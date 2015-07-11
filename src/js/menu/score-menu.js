@@ -18,6 +18,50 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
     LOCATIONS: 'locations'
   };
 
+  var KILLS_MENU = {
+    GROUP_PREFIX: 'kills-menu-group',
+    BUTTON_PREFIX: 'kills-btn',
+    GROUPS: [
+      {
+        TITLE: 'Civilians',
+        ICON: 'icon-el-adult',
+        ID: 'civ'
+      },
+      {
+        TITLE: 'Cops',
+        ICON: 'icon-police',
+        ID: 'cop'
+      },
+      {
+        TITLE: 'Animals',
+        ICON: 'fi-guide-dog',
+        ID: 'civ'
+      }
+    ],
+    BUTTONS: [
+      {
+        TITLE: 'Melee',
+        ICON: 'icon-baseball',
+        ID: 'melee'
+      },
+      {
+        TITLE: 'Firearm',
+        ICON: 'icon-el-target',
+        ID: 'firearm'
+      },
+      {
+        TITLE: 'Explosion',
+        ICON: 'icon-fire-station',
+        ID: 'explosion'
+      },
+      {
+        TITLE: 'Vehicle',
+        ICON: 'icon-bus',
+        ID: 'vehicle'
+      }
+    ]
+  };
+
   var BUTTON_HEIGHT = 56;
 
   var ANIM_TIME = 0.35;
@@ -32,18 +76,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
     this.$primary = this.$element.find('.primary');
 
-    this.open = {};
-
-    this.buttons = {};
-
-    var self = this;
-    _.forEach(MENU_TYPES, function (type) {
-      // add flags by key to the 'open' object:
-      self.open[type] = false;
-
-      // store the menu item object by key on 'buttons':
-      self.buttons[type] = new ScoreMenuPrimaryItem(type);
-    });
+    this.populateViewModel();
 
     this.generateViewModel();
   }
@@ -55,7 +88,14 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
     $primary: null,
 
+    buttons: {},
+
+    open: {},
+
+    openType: undefined,
+
     primaryTween: null,
+
 
     closeAllMenus: function (exceptType) {
       _.forEach(this.buttons, function ($btn, key) {
@@ -72,6 +112,11 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
         return;
       }
 
+      var ch = this.$primary.outerHeight();
+      this.$primary.css('height', 'auto');
+      var h = this.$primary.outerHeight();
+      this.$primary.css('height', ch);
+
       var self = this;
       var item = this.buttons[menuType];
 
@@ -86,24 +131,18 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
       item.closeItem(ANIM_TIME, BUTTON_HEIGHT);
 
       this.open[menuType] = false;
+      this.openType = undefined;
 
       this.setMenuOpen();
 
+      var th = item.secondaryTargetHeight;
+      h = (h < th) ? th : h;
+
       this.primaryTween = TweenLite.to(this.$primary[0], ANIM_TIME, {
+        'height': h,
         'paddingTop': MENU_OFFSET + 'px',
         onComplete: function () {
           self.$primary.removeClass('animating');
-        }
-      });
-    },
-
-    fixMenuHeight: function (time) {
-      var self = this;
-
-      this.$primary.css('height', this.$primary.outerHeight());
-
-      TweenLite.to(this.$primary[0], time, {
-        onComplete: function () {
           self.$primary.css('height', 'auto');
         }
       });
@@ -133,6 +172,11 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
         return;
       }
 
+      var ch = this.$primary.outerHeight();
+      this.$primary.css('height', 'auto');
+      var h = this.$primary.outerHeight();
+      this.$primary.css('height', ch);
+
       var self = this;
       var item = this.buttons[menuType];
 
@@ -140,13 +184,18 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
       this.setMenuForAnim(item);
 
-      item.openItem(ANIM_TIME);
-
       this.open[menuType] = true;
+      this.openType = menuType;
+
+      item.openItem(ANIM_TIME);
 
       this.setMenuOpen();
 
+      var th = item.secondaryTargetHeight;
+      h = (h < th) ? th : h;
+
       this.primaryTween = TweenLite.to(this.$primary[0], ANIM_TIME, {
+        'height': h,
         'paddingTop': (BUTTON_HEIGHT + MENU_OFFSET) + 'px',
         onComplete: function () {
           self.$primary.removeClass('animating');
@@ -154,9 +203,42 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
       });
     },
 
-    setMenuForAnim: function (item) {
-      this.fixMenuHeight(ANIM_TIME);
+    populateViewModel: function () {
+      var self = this;
 
+      // menu buttons:
+      _.forEach(MENU_TYPES, function (type) {
+        // add flags by key to the 'open' object:
+        self.open[type] = false;
+
+        // store the menu item object by key on 'buttons':
+        self.buttons[type] = new ScoreMenuPrimaryItem(type);
+      });
+
+
+      // kills menu:
+      this.killsMenu = {
+        groups: _.map(KILLS_MENU.GROUPS, function (g) {
+          return {
+            title: g.TITLE,
+            icon: g.ICON,
+            id: g.ID,
+            groupId: KILLS_MENU.GROUP_PREFIX + '-' + g.ID
+          };
+        }),
+
+        buttons: _.map(KILLS_MENU.BUTTONS, function (b) {
+          return {
+            title: b.TITLE,
+            icon: b.ICON,
+            id: '-' + b.ID,
+            idPrefix: KILLS_MENU.BUTTON_PREFIX + '-'
+          };
+        })
+      };
+    },
+
+    setMenuForAnim: function (item) {
       var after = false;
       var set = [];
 
