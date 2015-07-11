@@ -68,12 +68,15 @@
 															</h4>
 														</div>
 														<div class="col-xs-5">
-															<p class="group-counter form-control">0</p>
+															<p class="group-counter form-control with-label">
+																<span class="counter-label">Total</span>
+																<span class="value">0</span>
+															</p>
 														</div>
 												</header>
 												<div class="row">
 													<div class="group-buttons" data-bind="foreach: $parent.buttons">
-														<div class="col-xs-3">
+														<div class="col-xs-6 col-md-3">
 															<div class="menu-item">
 																<button data-bind="attr: { id: idPrefix + $parent.id + id }" class="btn btn-primary" type="button">
 																	<span class="label-wrapper">
@@ -103,12 +106,68 @@
 
 							<div class="secondary">
 								<div class="menu-wrap">
-									<div class="menu-item">
-										<button id="submenu-btn-kills-civ" class="btn btn-primary" type="button">
-											<span class="label-wrapper">
-												<span class="icon icon-pitch"></span>
-											</span>
-										</button>
+									<div>
+										<div>
+											<div class="stars menu-group" id="stars-menu-group">
+												<header>
+													<div class="row">
+														<div class="col-xs-7">
+															<p class="stars-counter group-counter form-control with-label">
+																<span class="counter-label">Current</span>
+																<span class="value">
+																	<span class="icon fi-sheriff-badge active"></span>
+																	<span class="icon fi-sheriff-badge active"></span>
+																	<span class="icon fi-sheriff-badge"></span>
+																	<span class="icon fi-sheriff-badge"></span>
+																	<span class="icon fi-sheriff-badge"></span>
+																</span>
+															</p>
+														</div>
+														<div class="col-xs-5">
+															<p class="group-counter form-control with-label">
+																<span class="counter-label">Cleared</span>
+																<span class="value">0</span>
+															</p>
+														</div>
+													</div>
+												</header>
+												<div class="row">
+													<div class="group-buttons">
+														<div class="col-xs-6 col-sm-3">
+															<div class="menu-item">
+																<button id="submenu-btn-kills-civ" class="btn btn-primary" type="button">
+																	<span class="label-wrapper">
+																		<span class="icon fa fa-plus"></span>
+																	</span>
+																</button>
+															</div>
+														</div>
+														<div class="col-xs-6 col-sm-3">
+															<div class="menu-item">
+																<button id="submenu-btn-kills-civ" class="btn btn-primary" type="button">
+																	<span class="label-wrapper">
+																		<span class="icon fa fa-minus"></span>
+																	</span>
+																</button>
+															</div>
+														</div>
+														<div class="col-xs-6 col-sm-3">
+															<div class="menu-item">
+															</div>
+														</div>
+														<div class="col-xs-6 col-sm-3">
+															<div class="menu-item">
+																<button id="submenu-btn-kills-civ" class="btn btn-primary" type="button">
+																	<span class="label-wrapper">
+																		<span class="icon fi-prohibited"></span>
+																	</span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -16,6 +16,10 @@
         width: 100%;
         padding: 0 100% 0 0;
 
+        .label {
+          font-weight: 400;
+        }
+
         .icon {
           margin-right: 0.6em;
         }
@@ -88,9 +92,29 @@
       }
 
       .group-counter {
+        font-weight: 700;
         float: right;
         margin: 0;
         max-width: 120px;
+        position: relative;
+        text-align: right;
+
+        .counter-label {
+          color: @brand-primary;
+          font-size: 0.6em;
+          left: 4px;
+          position: absolute;
+          top: 2px;
+          z-index: 1;
+        }
+
+        .value {
+          z-index: 5;
+        }
+
+        &.with-label {
+          padding-top: 10px;
+        }
       }
 
       .group-buttons {
@@ -100,10 +124,6 @@
         margin: 0 15px;
         overflow: auto;
         padding-top: 10px;
-      }
-
-      .col-xs-3 {
-        width: 50%;
       }
 
       &:last-child {
@@ -140,16 +160,17 @@
       border: 1px solid @brand-primary-dark;
       border-radius: 16px;
       color: @brand-primary-dark;
-      font-size: 20px;
       height: 32px;
       line-height: 32px;
       text-align: center;
       text-shadow: none;
+      top: 0;
       width: 32px;
+    }
 
-      &:before {
-        font-size: 20px;
-      }
+    .icon,
+    .icon:before {
+      font-size: 20px;
     }
 
     .label {
@@ -195,16 +216,6 @@
 
     .secondary {
       display: block;
-    }
-  }
-}
-
-@media (min-width: @screen-sm-min) {
-  .menu .secondary {
-    .menu-group {
-      .col-xs-3 {
-        width: 25%;
-      }
     }
   }
 }
