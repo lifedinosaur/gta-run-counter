@@ -98,7 +98,9 @@ function ($, _, utils) {
       this.$arrow.removeClass('fa-times')
         .addClass('fa-angle-right');
 
-      var w = this.$secondary.outerWidth() - this.$menuWrap.cssNumber('paddingLeft') - this.$menuWrap.cssNumber('paddingRight') - 2;
+      var w = this.$secondary.outerWidth() - this.$menuWrap.cssNumber('paddingLeft') -
+        this.$menuWrap.cssNumber('paddingRight') - 2;
+
       this.$menuWrap.width(w);
 
       this.menuWrapTween = TweenLite.to(this.$menuWrap[0], time, {
@@ -194,7 +196,9 @@ function ($, _, utils) {
         'marginLeft': '-41px',
         'marginRight': '-41px'
       });
-      var w = this.$secondary.outerWidth() - this.$menuWrap.cssNumber('paddingLeft') - this.$menuWrap.cssNumber('paddingRight') - 2;
+      var w = this.$secondary.outerWidth() - this.$menuWrap.cssNumber('paddingLeft') -
+        this.$menuWrap.cssNumber('paddingRight') - 2;
+
       this.$secondary.css({
         'marginLeft': '0px',
         'marginRight': '0px'
