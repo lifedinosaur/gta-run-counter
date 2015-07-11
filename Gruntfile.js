@@ -225,7 +225,7 @@ module.exports = function(grunt) {
     jshint: {
       source: [
         'Gruntfile.js',
-        '<%= config.paths.src.js %>' + '*.js',
+        '<%= config.paths.src.js %>' + '**/*.js',
         '!' + '<%= config.paths.src.js %>' + 'plugins.js'
       ]
     },

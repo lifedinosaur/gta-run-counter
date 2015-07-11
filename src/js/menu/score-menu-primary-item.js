@@ -1,9 +1,10 @@
 define(
 [
   'jquery',
-  'lodash'
+  'lodash',
+  'core/utils'
 ],
-function ($, _) {
+function ($, _, utils) {
   'use strict';
 
   function ScoreMenuPrimaryItem (menuType) {
@@ -22,6 +23,8 @@ function ($, _) {
     this.$arrow = this.$btn.find('.arrow');
 
     this.$secondary = this.$item.find('.secondary');
+
+    this.$menuWrap = this.$secondary.find('.menu-wrap');
   }
 
   ScoreMenuPrimaryItem.prototype = {
@@ -35,6 +38,8 @@ function ($, _) {
 
     $label: null,
 
+    $menuWrap: null,
+
     $secondary: null,
 
     arrowTween: null,
@@ -44,6 +49,8 @@ function ($, _) {
     itemTween: null,
 
     labelTween: null,
+
+    menuWrapTween: null,
 
     secondaryTween: null,
 
@@ -91,6 +98,14 @@ function ($, _) {
       this.$arrow.removeClass('fa-times')
         .addClass('fa-angle-right');
 
+      var w = this.$secondary.outerWidth() - this.$menuWrap.cssNumber('paddingLeft') - this.$menuWrap.cssNumber('paddingRight') - 2;
+      this.$menuWrap.width(w);
+
+      this.menuWrapTween = TweenLite.to(this.$menuWrap[0], time, {
+        'marginLeft': '-41px',
+        'marginRight': '-41px'
+      });
+
       this.secondaryTargetHeight = 0;
 
       this.secondaryTween = TweenLite.to(this.$secondary[0], time, {
@@ -102,6 +117,7 @@ function ($, _) {
       TweenLite.delayedCall(time, function () {
         self.$item.removeClass('animating');
         self.$secondary.css('height', 'auto');
+        self.$menuWrap.css('width', 'auto');
       });
     },
 
@@ -174,6 +190,22 @@ function ($, _) {
       this.$arrow.removeClass('fa-angle-right')
         .addClass('fa-times');
 
+      this.$secondary.css({
+        'marginLeft': '-41px',
+        'marginRight': '-41px'
+      });
+      var w = this.$secondary.outerWidth() - this.$menuWrap.cssNumber('paddingLeft') - this.$menuWrap.cssNumber('paddingRight') - 2;
+      this.$secondary.css({
+        'marginLeft': '0px',
+        'marginRight': '0px'
+      });
+      this.$menuWrap.width(w);
+
+      this.menuWrapTween = TweenLite.to(this.$menuWrap[0], time, {
+        'marginLeft': '0px',
+        'marginRight': '0px'
+      });
+
       this.$secondary.css('height', 'auto');
       this.secondaryTargetHeight = this.$secondary.outerHeight();
       this.$secondary.css('height', '0px');
@@ -187,6 +219,7 @@ function ($, _) {
       TweenLite.delayedCall(time, function () {
         self.$item.removeClass('animating');
         self.$secondary.css('height', 'auto');
+        self.$menuWrap.css('width', 'auto');
       });
     }
   };
