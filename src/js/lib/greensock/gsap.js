@@ -5,7 +5,7 @@
  */
 define(
 [
-  'greensock/TweenLite',
+  'TweenLite',
   'greensock/EasePack',
   'greensock/ColorPropsPlugin',
   'greensock/CSSPlugin'

@@ -44,11 +44,6 @@ module.exports = function(grunt) {
       deps: ['greensock/gsap=TweenLite']
     },
     {
-      name: 'CSSPlugin',
-      src: '<%= config.paths.dest.greensock %>',
-      deps: ['greensock/gsap=TweenLite']
-    },
-    {
       name: 'EasePack',
       src: '<%= config.paths.dest.greensock %>',
       deps: ['greensock/gsap=TweenLite']
@@ -466,7 +461,13 @@ module.exports = function(grunt) {
 
 
   // main tasks:
+  grunt.registerTask('dev', [
+    'build:dev',
+    'watch'
+  ]);
+
   grunt.registerTask('build', ['build:prod']);
+
   grunt.registerTask('default', ['build:dev']);
 };
 

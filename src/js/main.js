@@ -7,7 +7,8 @@ require.config(
       greensock: 'lib/greensock/',
       jquery: 'lib/jquery',
       knockout: 'lib/knockout',
-      lodash: 'lib/lodash'
+      lodash: 'lib/lodash',
+      TweenLite: 'lib/greensock/TweenLite'
     }
 });
 
