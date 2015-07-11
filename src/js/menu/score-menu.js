@@ -79,6 +79,11 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
     this.populateViewModel();
 
     this.generateViewModel();
+
+    var self = this;
+    $(document).on('resize.counter', function () {
+      self.fixMenuHeight();
+    });
   }
 
   ScoreMenu.prototype = _.create(ViewModel.prototype, {
@@ -135,7 +140,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
       this.setMenuOpen();
 
-      var th = item.secondaryTargetHeight;
+      var th = item.secondaryTargetHeight + BUTTON_HEIGHT;
       h = (h < th) ? th : h;
 
       this.primaryTween = TweenLite.to(this.$primary[0], ANIM_TIME, {
@@ -146,6 +151,21 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
           self.$primary.css('height', 'auto');
         }
       });
+    },
+
+    fixMenuHeight: function () {
+      if (!this.isOpen()) {
+        return;
+      }
+
+      var item = this.buttons[this.openType];
+
+      var h = this.$primary.outerHeight();
+
+      var th = item.$secondary.height() + BUTTON_HEIGHT;
+      h = (h < th) ? th : h;
+
+      this.$primary.css('height', h);
     },
 
     isAnimating: function () {
@@ -191,7 +211,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
       this.setMenuOpen();
 
-      var th = item.secondaryTargetHeight;
+      var th = item.secondaryTargetHeight + BUTTON_HEIGHT;
       h = (h < th) ? th : h;
 
       this.primaryTween = TweenLite.to(this.$primary[0], ANIM_TIME, {
