@@ -81,6 +81,7 @@ function ($, _, utils) {
 
       this.btnTween = TweenLite.to(this.$btn[0], time, {
         'borderRadius': '4px',
+        'height': '44px',
         'marginLeft': '0px',
         'paddingLeft': '0px'
       });
@@ -175,6 +176,7 @@ function ($, _, utils) {
 
       this.btnTween = TweenLite.to(this.$btn[0], time, {
         'borderRadius': '0px',
+        'height': '88px',
         'marginLeft': '-41px',
         'paddingLeft': '80px'
       });

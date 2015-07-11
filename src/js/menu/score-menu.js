@@ -63,6 +63,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
   };
 
   var BUTTON_HEIGHT = 56;
+  var BUTTON_OPEN_HEIGHT = 100;
 
   var ANIM_TIME = 0.35;
 
@@ -162,7 +163,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
       var h = this.$primary.outerHeight();
 
-      var th = item.$secondary.height() + BUTTON_HEIGHT;
+      var th = item.$secondary.height() + BUTTON_OPEN_HEIGHT;
       h = (h < th) ? th : h;
 
       this.$primary.css('height', h);
@@ -211,7 +212,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
 
       this.setMenuOpen();
 
-      var th = item.secondaryTargetHeight + BUTTON_HEIGHT;
+      var th = item.secondaryTargetHeight + BUTTON_OPEN_HEIGHT;
       h = (h < th) ? th : h;
 
       this.primaryTween = TweenLite.to(this.$primary[0], ANIM_TIME, {
