@@ -15,14 +15,35 @@
         display: block;
         width: 100%;
         padding: 0 100% 0 0;
+        position: relative;
 
         .label {
           font-weight: 400;
         }
 
         .icon {
-          margin-right: 0.6em;
+          margin: 0 0.4em;
         }
+
+        .arrow {
+          font-size: 1em;
+        }
+
+        /*.bonus-counter {
+          height: 72px;
+          padding: 0;
+          position: absolute;
+          right: 60px;
+          top: 8px;
+          text-shadow: none;
+          width: 42%;
+
+          .counter-label {
+            color: @brand-primary;
+            font-size: 0.6em;
+            margin: 0;
+          }
+        }*/
       }
     }
   }
@@ -35,6 +56,63 @@
     height: 0;
     overflow: hidden;
 
+    .bonus-alert {
+      border-radius: 0;
+      height: 44px;
+      margin: 0 -18px 0.5em;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      text-align: left;
+
+      .bonus-label,
+      .bonus-score {
+        margin: 0 0 0 6px;
+        text-shadow: 0 -1px #fff;
+      }
+
+      .bonus-label {
+        color: @brand-info;
+        font-size: 0.75em;
+        font-weight: 700;
+        margin-top: 5px;
+      }
+
+      .bonus-score {
+        font-size: 1em;
+
+        .score {
+          color: @brand-info;
+        }
+
+        .type {
+          font-size: 0.75em;
+        }
+      }
+
+      .bonus-counter {
+        margin: 5px auto 0;
+        max-width: 240px;
+        text-align: right;
+
+        .control-label {
+          color: @brand-info;
+        }
+      }
+
+      .bonus-toggle {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 28px;
+        margin-top: 16px;
+        padding: 0 6px;
+
+        span {
+          font-size: 0.75em;
+        }
+      }
+    }
+
     .menu-wrap {
       margin: 0 -41px;
       padding: 0 18px;
@@ -44,10 +122,6 @@
     .menu-item {
       margin-bottom: 10px;
       width: 100%;
-
-      > .btn {
-        width: 100%;
-      }
     }
 
     .menu-group {
@@ -92,29 +166,9 @@
       }
 
       .group-counter {
-        font-weight: 700;
         float: right;
         margin: 0;
-        max-width: 120px;
-        position: relative;
         text-align: right;
-
-        .counter-label {
-          color: @brand-primary;
-          font-size: 0.6em;
-          left: 4px;
-          position: absolute;
-          top: 2px;
-          z-index: 1;
-        }
-
-        .value {
-          z-index: 5;
-        }
-
-        &.with-label {
-          padding-top: 10px;
-        }
       }
 
       .group-buttons {
@@ -141,10 +195,6 @@
     position: relative;
     text-shadow: 0 -1px @text-color;
 
-    &:focus {
-      background: @brand-primary;
-    }
-
     span {
       display: inline-block;
       text-align: left;
@@ -152,7 +202,7 @@
 
     .label-wrapper {
       margin: 0;
-      padding: 0 0.6em;
+      padding: 0;
     }
 
     .icon {
@@ -174,6 +224,7 @@
     }
 
     .label {
+      font-size: 0.75em;
       font-weight: 300;
       padding: 0;
     }
@@ -191,11 +242,28 @@
     }
   }
 
-  .secondary .btn {
-    padding: 6px 0;
+  .form-control {
+    padding: 6px 8px;
+  }
 
-    .label-wrapper {
-      padding: 0;
+  .form-control.with-label {
+    max-width: 120px;
+    padding-top: 10px;
+    position: relative;
+
+    .control-label {
+      color: @brand-primary;
+      font-size: 0.6em;
+      font-weight: 700;
+      left: 4px;
+      position: absolute;
+      top: 2px;
+      z-index: 1;
+    }
+
+    .value {
+      font-weight: 700;
+      z-index: 5;
     }
   }
 
@@ -216,6 +284,15 @@
 
     .secondary {
       display: block;
+    }
+  }
+
+  .secondary .btn {
+    padding: 6px 0;
+    width: 100%;
+
+    .label-wrapper {
+      padding: 0;
     }
   }
 }

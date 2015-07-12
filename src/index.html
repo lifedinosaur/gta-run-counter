@@ -51,10 +51,39 @@
 									<span class="label">Kills</span>
 								</span>
 								<span class="arrow fa fa-angle-right"></span>
+
+								<!--<div class="bonus-counter well">
+									<header>
+										<h5 class="control-label">Streak</h5>
+									</header>
+								</div>-->
 							</button>
 
 							<div class="secondary">
 								<div class="menu-wrap">
+									<div class="bonus-alert alert alert-info">
+										<div class="row">
+											<div class="col-xs-4 col-md-5">
+												<h5 class="bonus-label">Streak!</h5>
+												<h6 class="bonus-score">
+													<span class="score">140</span>
+													<span class="type">kills</span>
+												</h6>
+											</div>
+											<div class="col-xs-5 col-sm-6">
+												<p class="bonus-counter form-control with-label">
+													<span class="control-label">Remaining</span>
+													<span class="value">00:00</span>
+												</p>
+											</div>
+											<div class="col-xs-3 col-sm-2 col-md-1">
+												<button class="bonus-toggle btn btn-info" type="button">
+													<span class="fa fa-arrow-down"></span>
+												</button>
+											</div>
+										</div>
+									</div>
+
 									<div data-bind="template: { name: 'kills-menu-group-template', data: killsMenu }"></div>
 
 									<script type="text/html" id="kills-menu-group-template">
@@ -69,7 +98,7 @@
 														</div>
 														<div class="col-xs-5">
 															<p class="group-counter form-control with-label">
-																<span class="counter-label">Total</span>
+																<span class="control-label">Total</span>
 																<span class="value">0</span>
 															</p>
 														</div>
@@ -113,7 +142,7 @@
 													<div class="row">
 														<div class="col-xs-7">
 															<p class="stars-counter group-counter form-control with-label">
-																<span class="counter-label">Current</span>
+																<span class="control-label">Current</span>
 																<span class="value">
 																	<span class="icon fi-sheriff-badge active"></span>
 																	<span class="icon fi-sheriff-badge active"></span>
@@ -125,7 +154,7 @@
 														</div>
 														<div class="col-xs-5">
 															<p class="group-counter form-control with-label">
-																<span class="counter-label">Cleared</span>
+																<span class="control-label">Cleared</span>
 																<span class="value">0</span>
 															</p>
 														</div>

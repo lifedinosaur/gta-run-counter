@@ -18,7 +18,7 @@ function ($, _, utils) {
 
     this.$item = this.$btn.parents('.menu-item');
 
-    this.$label = this.$btn.find('.label-wrapper');
+    this.$labelWrap = this.$btn.find('.label-wrapper');
 
     this.$arrow = this.$btn.find('.arrow');
 
@@ -36,7 +36,7 @@ function ($, _, utils) {
 
     $item: null,
 
-    $label: null,
+    $labelWrap: null,
 
     $menuWrap: null,
 
@@ -48,7 +48,7 @@ function ($, _, utils) {
 
     itemTween: null,
 
-    labelTween: null,
+    labelWrapTween: null,
 
     menuWrapTween: null,
 
@@ -86,14 +86,15 @@ function ($, _, utils) {
         'paddingLeft': '0px'
       });
 
-      this.labelTween = TweenLite.to(this.$label[0], time, {
-        'marginLeft': '0px'
+      this.labelWrapTween = TweenLite.to(this.$labelWrap[0], time, {
+        'marginLeft': '0px',
+        'scaleX': 1,
+        'scaleY': 1
       });
 
       this.arrowTween = TweenLite.to(this.$arrow[0], time, {
-        'fontSize': '1.2em',
-        'rotation': 0,
-        'width': '2em'
+        'fontSize': '1em',
+        'rotation': 0
       });
 
       this.$arrow.removeClass('fa-times')
@@ -143,12 +144,14 @@ function ($, _, utils) {
 
       this.itemTween.kill();
       this.btnTween.kill();
-      this.labelTween.kill();
+      this.labelWrapTween.kill();
       this.arrowTween.kill();
       this.secondaryTween.kill();
+      this.menuWrapTween.kill();
 
       this.$item.removeClass('animating');
       this.$secondary.css('height', 'auto');
+      this.$menuWrap.css('width', 'auto');
     },
 
     isAnimating: function () {
@@ -181,14 +184,15 @@ function ($, _, utils) {
         'paddingLeft': '80px'
       });
 
-      this.labelTween = TweenLite.to(this.$label[0], time, {
-        'marginLeft': '-70px'
+      this.labelWrapTween = TweenLite.to(this.$labelWrap[0], time, {
+        'marginLeft': '-65px',
+        'scaleX': 1.2,
+        'scaleY': 1.2
       });
 
       this.arrowTween = TweenLite.to(this.$arrow[0], time, {
-        'fontSize': '0.9em',
-        'rotation': 90,
-        'width': '4em'
+        'fontSize': '1.15em',
+        'rotation': 90
       });
 
       this.$arrow.removeClass('fa-angle-right')
