@@ -1,191 +1,4 @@
 .menu {
-  .primary {
-    margin: 0 auto;
-    padding: 14px 0 0 0;
-    position: relative;
-    //max-width: @controllerMaxWidth;
-    z-index: 10;
-
-    > .menu-item {
-      display: inline-block;
-      margin: 6px 0;
-      width: 100%;
-
-      > .btn {
-        display: block;
-        width: 100%;
-        padding: 0 100% 0 0;
-        position: relative;
-
-        .label {
-          font-weight: 400;
-        }
-
-        .icon {
-          margin: 0 0.4em;
-        }
-
-        .arrow {
-          font-size: 1em;
-        }
-
-        /*.bonus-counter {
-          height: 72px;
-          padding: 0;
-          position: absolute;
-          right: 60px;
-          top: 8px;
-          text-shadow: none;
-          width: 42%;
-
-          .counter-label {
-            color: @brand-primary;
-            font-size: 0.6em;
-            margin: 0;
-          }
-        }*/
-      }
-    }
-  }
-
-  .secondary {
-    background: #fff;
-    border: 1px solid @brand-primary-dark;
-    border-top: none;
-    display: none;
-    height: 0;
-    overflow: hidden;
-
-    .bonus-alert {
-      border-radius: 0;
-      height: 44px;
-      margin: 0 -18px 0.5em;
-      overflow: hidden;
-      padding: 0;
-      position: relative;
-      text-align: left;
-
-      .bonus-label,
-      .bonus-score {
-        margin: 0 0 0 6px;
-        text-shadow: 0 -1px #fff;
-      }
-
-      .bonus-label {
-        color: @brand-info;
-        font-size: 0.75em;
-        font-weight: 700;
-        margin-top: 5px;
-      }
-
-      .bonus-score {
-        font-size: 1em;
-
-        .score {
-          color: @brand-info;
-        }
-
-        .type {
-          font-size: 0.75em;
-        }
-      }
-
-      .bonus-counter {
-        margin: 5px auto 0;
-        max-width: 240px;
-        text-align: right;
-
-        .control-label {
-          color: @brand-info;
-        }
-      }
-
-      .bonus-toggle {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        height: 28px;
-        margin-top: 16px;
-        padding: 0 6px;
-
-        span {
-          font-size: 0.75em;
-        }
-      }
-    }
-
-    .menu-wrap {
-      margin: 0 -41px;
-      padding: 0 18px;
-      width: 100%;
-    }
-
-    .menu-item {
-      margin-bottom: 10px;
-      width: 100%;
-    }
-
-    .menu-group {
-      margin: 0 -18px;
-      padding: 6px;
-
-      .row {
-        clear: both;
-      }
-
-      header {
-        background: @light-background;
-        border: 1px solid @brand-lightness;
-        border-bottom: none;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-        padding: 12px;
-        margin: 0;
-      }
-
-      .group-title,
-      .group-icon {
-        line-height: 34px;
-        margin: 0;
-        text-shadow: 0 -1px #fff;
-      }
-
-      .group-title {
-        font-size: 1em;
-        float: left;
-        text-align: left;
-      }
-
-      .group-icon {
-        border-left: 1px solid @text-color;
-        margin-left: 12px;
-        padding-left: 12px;
-
-        &:before {
-          font-size: 1em;
-        }
-      }
-
-      .group-counter {
-        float: right;
-        margin: 0;
-        text-align: right;
-      }
-
-      .group-buttons {
-        border: 1px solid @brand-lightness;
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        margin: 0 15px;
-        overflow: auto;
-        padding-top: 10px;
-      }
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-  }
-
   .btn {
     font-size: 1.2em;
     height: @buttonHeight;
@@ -267,29 +80,250 @@
     }
   }
 
-  .primary > .menu-item.fixing,
-  .primary > .menu-item.open,
-  .primary > .menu-item.animating {
-    left: 0;
-    position: absolute;
-  }
+  .menu-group {
+    margin: 0 -18px;
+    padding: 6px;
 
-  .primary > .menu-item.open,
-  .primary > .menu-item.animating {
-    z-index: 200;
-
-    > .btn {
-      background: @brand-primary;
+    .row {
+      clear: both;
     }
 
-    .secondary {
-      display: block;
+    header {
+      background: @light-background;
+      border: 1px solid @brand-lightness;
+      border-bottom: none;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 12px;
+      margin: 0;
+    }
+
+    .group-title,
+    .group-icon {
+      line-height: 34px;
+      margin: 0;
+      text-shadow: 0 -1px #fff;
+    }
+
+    .group-title {
+      font-size: 1em;
+      float: left;
+      text-align: left;
+    }
+
+    .group-icon {
+      border-left: 1px solid @text-color;
+      margin-left: 12px;
+      padding-left: 12px;
+
+      &:before {
+        font-size: 1em;
+      }
+    }
+
+    .group-counter {
+      float: right;
+      margin: 0;
+      text-align: right;
+    }
+
+    .group-buttons {
+      border: 1px solid @brand-lightness;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      margin: 0 15px;
+      overflow: auto;
+      padding-top: 10px;
+    }
+
+    &:last-child {
+      border-bottom: none;
     }
   }
 
-  .secondary .btn {
-    padding: 6px 0;
-    width: 100%;
+  .bonus-alert {
+    border-radius: 0;
+    height: 44px;
+    margin: 0 -18px 0.5em;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-align: left;
+
+    .bonus-label,
+    .bonus-score {
+      margin: 0 0 0 6px;
+      text-shadow: 0 -1px #fff;
+    }
+
+    .bonus-label {
+      font-size: 0.75em;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+
+    .bonus-score {
+      font-size: 1em;
+
+      .type {
+        font-size: 0.75em;
+      }
+    }
+
+    .bonus-counter {
+      margin: 5px auto 0;
+      max-width: 240px;
+      text-align: right;
+    }
+
+    .bonus-toggle {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      height: 28px;
+      margin-top: 16px;
+      padding: 0 6px;
+
+      span {
+        font-size: 0.75em;
+      }
+    }
+  }
+
+  .alert-success {
+    .bonus-label {
+      color: @brand-success;
+    }
+
+    .bonus-score .score {
+      color: @brand-success;
+    }
+
+    .bonus-counter .control-label {
+      color: @brand-success;
+    }
+  }
+
+  .alert-warning {
+    .bonus-label {
+      color: @brand-warning;
+    }
+
+    .bonus-score .score {
+      color: @brand-warning;
+    }
+
+    .bonus-counter .control-label {
+      color: @brand-warning;
+    }
+  }
+
+  .alert-danger {
+    .bonus-label {
+      color: @brand-danger;
+    }
+
+    .bonus-score .score {
+      color: @brand-danger;
+    }
+
+    .bonus-counter .control-label {
+      color: @brand-danger;
+    }
+  }
+
+  .alert-info {
+    .bonus-label {
+      color: @brand-info;
+    }
+
+    .bonus-score .score {
+      color: @brand-info;
+    }
+
+    .bonus-counter .control-label {
+      color: @brand-info;
+    }
+  }
+
+  .primary {
+    margin: 0 auto;
+    padding: 14px 0 0 0;
+    position: relative;
+    //max-width: @controllerMaxWidth;
+    z-index: 10;
+
+    > .menu-item {
+      display: inline-block;
+      margin: 6px 0;
+      width: 100%;
+
+      > .btn {
+        display: block;
+        width: 100%;
+        padding: 0 100% 0 0;
+        position: relative;
+
+        .label {
+          font-weight: 400;
+        }
+
+        .icon {
+          margin: 0 0.4em;
+        }
+
+        .arrow {
+          font-size: 1em;
+        }
+      }
+
+      &.fixing,
+      &.open,
+      &.animating {
+        left: 0;
+        position: absolute;
+      }
+
+      &.open,
+      &.animating {
+        z-index: 200;
+
+        > .btn {
+          background: @brand-primary;
+        }
+
+        .secondary {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .secondary {
+    background: #fff;
+    border: 1px solid @brand-primary-dark;
+    border-top: none;
+    display: none;
+    height: 0;
+    overflow: hidden;
+
+    .menu-wrap {
+      margin: 0 -41px;
+      padding: 0 18px;
+      width: 100%;
+    }
+
+    .menu-item {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    .group-buttons .btn {
+      padding: 6px 0;
+    }
 
     .label-wrapper {
       padding: 0;
