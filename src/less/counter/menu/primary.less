@@ -1,0 +1,52 @@
+.primary {
+  margin: 0 auto;
+  padding: 14px 0 0 0;
+  position: relative;
+  //max-width: @controllerMaxWidth;
+  z-index: 10;
+
+  > .menu-item {
+    display: inline-block;
+    margin: 6px 0;
+    width: 100%;
+
+    > .btn {
+      display: block;
+      width: 100%;
+      padding: 0 100% 0 0;
+      position: relative;
+
+      .label {
+        font-weight: 400;
+      }
+
+      .icon {
+        margin: 0 0.4em;
+      }
+
+      .arrow {
+        font-size: 1em;
+      }
+    }
+
+    &.fixing,
+    &.open,
+    &.animating {
+      left: 0;
+      position: absolute;
+    }
+
+    &.open,
+    &.animating {
+      z-index: 200;
+
+      > .btn {
+        background: @brand-primary;
+      }
+
+      .secondary {
+        display: block;
+      }
+    }
+  }
+}

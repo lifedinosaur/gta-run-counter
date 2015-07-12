@@ -1,0 +1,32 @@
+.stars.menu-group {
+  .stars-counter.group-counter {
+    float: none;
+    max-width: 240px;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    text-align: center;
+
+    .value {
+      .icon {
+        color: @text-color;
+        text-shadow: -1px 0 @brand-lightness,
+          0 1px @brand-lightness,
+          1px 0 @brand-lightness,
+          0 -1px @brand-lightness;
+
+        & + .icon {
+          margin-left: 2px;
+        }
+      }
+
+      .icon.active {
+        color: @brand-warning;
+        text-shadow: -1px 0 @brand-danger,
+          0 1px @brand-danger,
+          1px 0 @brand-danger,
+          0 -1px @brand-danger;
+      }
+    }
+  }
+}

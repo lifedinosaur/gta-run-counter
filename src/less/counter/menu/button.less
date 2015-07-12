@@ -1,0 +1,55 @@
+.btn {
+  font-size: 1.2em;
+  height: @buttonHeight;
+  margin: 0;
+  outline: 0;
+  padding: 6px 12px;
+  position: relative;
+  text-shadow: 0 -1px @text-color;
+
+  span {
+    display: inline-block;
+    text-align: left;
+  }
+
+  .label-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+
+  .icon {
+    background: #fff;
+    border: 1px solid @brand-primary-dark;
+    border-radius: 16px;
+    color: @brand-primary-dark;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    text-shadow: none;
+    top: 0;
+    width: 32px;
+  }
+
+  .icon,
+  .icon:before {
+    font-size: 20px;
+  }
+
+  .label {
+    font-size: 0.75em;
+    font-weight: 300;
+    padding: 0;
+  }
+
+  .arrow {
+    font-size: 1.2em;
+    height: @buttonHeight;
+    line-height: @buttonHeight;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 2em;
+  }
+}
