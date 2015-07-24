@@ -1,6 +1,6 @@
 .secondary {
   background: #fff;
-  border: 1px solid @brand-primary-dark;
+  border: 1px solid darken(@btn-primary-bg, 5%);
   border-top: none;
   display: none;
   height: 0;
@@ -23,6 +23,31 @@
 
   .group-buttons .btn {
     padding: 6px 0;
+
+    .icon {
+      border-radius: 14px;
+      height: 28px;
+      line-height: 28px;
+      top: 0;
+      width: 28px;
+
+      &.double {
+        width: 52px;
+
+        span {
+          margin-top: -4px;
+        }
+
+        .size {
+          font-size: 0.7em;
+        }
+      }
+    }
+
+    .icon,
+    .icon:before {
+      font-size: 16px;
+    }
   }
 
   .label-wrapper {

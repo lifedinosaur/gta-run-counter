@@ -2,7 +2,6 @@
   margin: 0 auto;
   padding: 14px 0 0 0;
   position: relative;
-  //max-width: @controllerMaxWidth;
   z-index: 10;
 
   > .menu-item {
@@ -11,10 +10,15 @@
     width: 100%;
 
     > .btn {
+      border-color: darken(@btn-primary-bg, 5%);
       display: block;
       width: 100%;
       padding: 0 100% 0 0;
       position: relative;
+
+      &:focus {
+        background: @btn-primary-bg;
+      }
 
       .label {
         font-weight: 400;
@@ -41,7 +45,7 @@
       z-index: 200;
 
       > .btn {
-        background: @brand-primary;
+        background: @btn-primary-bg;
       }
 
       .secondary {

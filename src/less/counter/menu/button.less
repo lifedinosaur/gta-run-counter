@@ -19,15 +19,28 @@
 
   .icon {
     background: #fff;
-    border: 1px solid @brand-primary-dark;
+    border: 1px solid darken(@btn-primary-bg, 5%);
     border-radius: 16px;
-    color: @brand-primary-dark;
+    color: darken(@btn-primary-bg, 5%);
     height: 32px;
     line-height: 32px;
     text-align: center;
     text-shadow: none;
     top: 0;
     width: 32px;
+
+    span {
+      vertical-align: middle;
+    }
+  }
+
+  &.active {
+    .button-variant(@btn-info-color, @btn-info-bg, @btn-info-border);
+
+    .icon {
+      border-color: darken(@btn-info-bg, 5%);
+      color: darken(@btn-info-bg, 5%);
+    }
   }
 
   .icon,

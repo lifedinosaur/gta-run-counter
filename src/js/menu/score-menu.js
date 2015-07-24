@@ -46,7 +46,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
       },
       {
         TITLE: 'Firearm',
-        ICON: 'icon-el-target',
+        ICON: 'fi-target-two',
         ID: 'firearm'
       },
       {
@@ -56,7 +56,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
       },
       {
         TITLE: 'Vehicle',
-        ICON: 'icon-bus',
+        ICON: 'fa fa-truck',
         ID: 'vehicle'
       }
     ]
