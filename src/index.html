@@ -27,7 +27,7 @@
 					<p><span title="7/3" class="glyphicon glyphicon-barcode"
 						aria-label="7/3"></span></p>
 				</div>
-				<div class="headline"><h3><small>GTA</small> Run Counter</h3></h3></div>
+				<div class="headline"><h3><small>GTA V</small> Run Counter</h3></h3></div>
 			</header>
 
 			<div class="controller well">
@@ -55,64 +55,7 @@
 
 							<div class="secondary">
 								<div class="menu-wrap">
-									<div class="bonus-alert alert alert-info">
-										<div class="row">
-											<div class="col-xs-4 col-md-5">
-												<h5 class="bonus-label">Streak!</h5>
-												<h6 class="bonus-score">
-													<span class="score">140</span>
-													<span class="type">kills</span>
-												</h6>
-											</div>
-											<div class="col-xs-5 col-sm-6">
-												<p class="bonus-counter form-control with-label">
-													<span class="control-label">Remaining</span>
-													<span class="value">00:00</span>
-												</p>
-											</div>
-											<div class="col-xs-3 col-sm-2 col-md-1">
-												<button class="bonus-toggle btn btn-info" type="button">
-													<span class="fa fa-arrow-down"></span>
-												</button>
-											</div>
-										</div>
-									</div>
-
-									<div data-bind="template: { name: 'kills-menu-group-template', data: killsMenu }"></div>
-
-									<script type="text/html" id="kills-menu-group-template">
-										<div data-bind="foreach: groups">
-											<div data-bind="attr: { id: groupId }" class="kills menu-group">
-												<header>
-													<div class="row">
-														<div class="col-xs-7">
-															<h4 class="group-title">
-																<span class="text" data-bind="text: title"></span><span class="group-icon" data-bind="css: icon"></span>
-															</h4>
-														</div>
-														<div class="col-xs-5">
-															<p class="group-counter form-control with-label">
-																<span class="control-label">Total</span>
-																<span class="value">0</span>
-															</p>
-														</div>
-												</header>
-												<div class="row">
-													<div class="group-buttons" data-bind="foreach: $parent.buttons">
-														<div class="col-xs-6 col-md-3">
-															<div class="menu-item">
-																<button data-bind="attr: { id: idPrefix + $parent.id + id }" class="btn btn-primary" type="button">
-																	<span class="label-wrapper">
-																		<span class="icon" data-bind="css: icon"></span>
-																	</span>
-																</button>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</script>
+									<div data-bind="template: { name: 'kills-menu-template', data: killsMenu }"></div>
 								</div>
 							</div>
 						</div>
@@ -129,62 +72,7 @@
 
 							<div class="secondary">
 								<div class="menu-wrap">
-									<div class="stars menu-group" id="stars-menu-group">
-										<header>
-											<div class="row">
-												<div class="col-xs-7">
-													<p class="stars-counter group-counter form-control with-label">
-														<span class="control-label">Current</span>
-														<span class="value">
-															<span class="icon fi-sheriff-badge active"></span>
-															<span class="icon fi-sheriff-badge active"></span>
-															<span class="icon fi-sheriff-badge"></span>
-															<span class="icon fi-sheriff-badge"></span>
-															<span class="icon fi-sheriff-badge"></span>
-														</span>
-													</p>
-												</div>
-												<div class="col-xs-5">
-													<p class="group-counter form-control with-label">
-														<span class="control-label">Cleared</span>
-														<span class="value">0</span>
-													</p>
-												</div>
-											</div>
-										</header>
-										<div class="row">
-											<div class="group-buttons">
-												<div class="col-xs-6 col-sm-3">
-													<div class="menu-item">
-														<button id="submenu-btn-stars-add" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-plus"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-3">
-													<div class="menu-item">
-														<button id="submenu-btn-stars-remove" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-minus"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-3"></div>
-												<div class="col-xs-6 col-sm-3">
-													<div class="menu-item">
-														<button id="submenu-btn-stars-clear" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fi-prohibited"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+									<div data-bind="template: { name: 'stars-menu-template', data: starsMenu }"></div>
 								</div>
 							</div>
 						</div>
@@ -201,94 +89,7 @@
 
 							<div class="secondary">
 								<div class="menu-wrap">
-									<div class="weapons menu-group" id="weapons-menu-group">
-										<header>
-											<div class="row">
-												<div class="col-xs-7">
-													<p class="fav-counter group-counter form-control with-label">
-														<span class="control-label">Favorite</span>
-														<span class="text value">Firearm (sm)</span>
-													</p>
-												</div>
-												<div class="col-xs-5">
-													<p class="group-counter form-control with-label">
-														<span class="control-label">Firearm (sm)</span>
-														<span class="value">00:00</span>
-													</p>
-												</div>
-											</div>
-										</header>
-										<div class="row">
-											<div class="group-buttons">
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-weapons-melee" class="btn btn-primary active" type="button">
-															<span class="label-wrapper">
-																<span class="icon icon-baseball"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-weapons-small" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="double icon">
-																	<span class="fi-target-two"></span>
-																	<span class="size">S</span>
-																</span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-weapons-mid" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="double icon">
-																	<span class="fi-target-two"></span>
-																	<span class="size">M</span>
-																</span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-weapons-large" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="double icon">
-																	<span class="fi-target-two"></span>
-																	<span class="size">L</span>
-																</span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-weapons-huge" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="double icon">
-																	<span class="fi-target-two"></span>
-																	<span class="size">XL</span>
-																</span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-weapons-explosion" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon icon-fire-station"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+									<div data-bind="template: { name: 'weapons-menu-template', data: weaponsMenu }"></div>
 								</div>
 							</div>
 						</div>
@@ -305,82 +106,7 @@
 
 							<div class="secondary">
 								<div class="menu-wrap">
-									<div class="vehicles menu-group" id="vehicles-menu-group">
-										<header>
-											<div class="row">
-												<div class="col-xs-7">
-													<p class="fav-counter group-counter form-control with-label">
-														<span class="control-label">Favorite</span>
-														<span class="text value">Car</span>
-													</p>
-												</div>
-												<div class="col-xs-5">
-													<p class="vehicles-counter group-counter form-control with-label">
-														<span class="control-label">Stolen</span>
-														<span class="value">0</span>
-													</p>
-												</div>
-											</div>
-										</header>
-										<div class="row">
-											<div class="group-buttons">
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-vehicles-car" class="btn btn-primary active" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-car"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-vehicles-truck" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-truck"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-vehicles-bike" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-motorcycle"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-vehicles-sea" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-ship"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-vehicles-air" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-plane"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-vehicles-emergency" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-ambulance"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+									<div data-bind="template: { name: 'vehicles-menu-template', data: vehiclesMenu }"></div>
 								</div>
 							</div>
 						</div>
@@ -397,82 +123,7 @@
 
 							<div class="secondary">
 								<div class="menu-wrap">
-									<div class="locations menu-group" id="locations-menu-group">
-										<header>
-											<div class="row">
-												<div class="col-xs-7">
-													<p class="fav-counter group-counter form-control with-label">
-														<span class="control-label">Favorite</span>
-														<span class="text value">Desert</span>
-													</p>
-												</div>
-												<div class="col-xs-5">
-													<p class="group-counter form-control with-label">
-														<span class="control-label">Desert</span>
-														<span class="value">00:00</span>
-													</p>
-												</div>
-											</div>
-										</header>
-										<div class="row">
-											<div class="group-buttons">
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-locations-hood" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-home"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-locations-city" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-building"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-locations-beach" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon glyphicon glyphicon-sunglasses"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-locations-mountains" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fi-mountains"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-locations-forest" class="btn btn-primary" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-tree"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-4">
-													<div class="menu-item">
-														<button id="submenu-btn-locations-desert" class="btn btn-primary active" type="button">
-															<span class="label-wrapper">
-																<span class="icon fa fa-sun-o"></span>
-															</span>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+									<div data-bind="template: { name: 'locations-menu-template', data: locationsMenu }"></div>
 								</div>
 							</div>
 						</div>
@@ -497,6 +148,284 @@
 			</section>
 		</article>
 	</div>
+
+	<script type="text/html" id="kills-menu-template">
+		<div class="bonus-alert alert alert-info">
+			<div class="row">
+				<div class="col-xs-4 col-md-5">
+					<h5 class="bonus-label">Streak!</h5>
+					<h6 class="bonus-score">
+						<span class="score">140</span>
+						<span class="type">kills</span>
+					</h6>
+				</div>
+				<div class="col-xs-5 col-sm-6">
+					<p class="bonus-counter form-control with-label">
+						<span class="control-label">Remaining</span>
+						<span class="value">00:00</span>
+					</p>
+				</div>
+				<div class="col-xs-3 col-sm-2 col-md-1">
+					<button class="bonus-toggle btn btn-info" type="button">
+						<span class="fa fa-arrow-down"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div data-bind="foreach: groups">
+			<div data-bind="attr: { id: groupId }" class="kills menu-group">
+				<header>
+					<div class="row">
+						<div class="col-xs-7">
+							<h4 class="group-title">
+								<span class="text" data-bind="text: title"></span><span class="group-icon" data-bind="css: icon"></span>
+							</h4>
+						</div>
+						<div class="col-xs-5">
+							<p class="group-counter form-control with-label">
+								<span class="control-label">Total</span>
+								<span class="value">0</span>
+							</p>
+						</div>
+					</div>
+				</header>
+				<div class="row">
+					<div class="group-buttons" data-bind="foreach: $parent.buttons">
+						<div class="col-xs-6 col-md-3">
+							<div class="menu-item">
+								<button data-bind="attr: { id: idPrefix + $parent.id + id, title: title }" class="btn btn-primary" type="button">
+									<span class="label-wrapper">
+										<span class="icon" data-bind="css: icon"></span>
+									</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="stars-menu-template">
+		<div class="bonus-alert alert alert-info">
+			<div class="row">
+				<div class="col-xs-4 col-md-5">
+					<h5 class="bonus-label">Spree!</h5>
+					<h6 class="bonus-score">
+						<span class="score">2</span>
+						<span class="type">Stars</span>
+					</h6>
+				</div>
+				<div class="col-xs-5 col-sm-6">
+					<p class="bonus-counter form-control with-label">
+						<span class="control-label">Duration</span>
+						<span class="value">00:00</span>
+					</p>
+				</div>
+				<div class="col-xs-3 col-sm-2 col-md-1">
+					<button class="bonus-toggle btn btn-info" type="button">
+						<span class="fa fa-arrow-down"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="stars menu-group" id="stars-menu-group">
+			<header>
+				<div class="row">
+					<div class="col-xs-7">
+						<p class="stars-counter group-counter form-control with-label">
+							<span class="control-label">Current</span>
+							<span class="value">
+								<span class="icon fi-sheriff-badge active"></span>
+								<span class="icon fi-sheriff-badge active"></span>
+								<span class="icon fi-sheriff-badge"></span>
+								<span class="icon fi-sheriff-badge"></span>
+								<span class="icon fi-sheriff-badge"></span>
+							</span>
+						</p>
+					</div>
+					<div class="col-xs-5">
+						<p class="group-counter form-control with-label">
+							<span class="control-label">Cleared</span>
+							<span class="value">0</span>
+						</p>
+					</div>
+				</div>
+			</header>
+			<div class="row">
+				<div class="group-buttons">
+					<div class="col-xs-6 col-sm-3">
+						<div class="menu-item">
+							<button id="submenu-btn-stars-add" class="btn btn-primary" type="button">
+								<span class="label-wrapper">
+									<span class="icon fa fa-plus"></span>
+								</span>
+							</button>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3">
+						<div class="menu-item">
+							<button id="submenu-btn-stars-remove" class="btn btn-primary" type="button">
+								<span class="label-wrapper">
+									<span class="icon fa fa-minus"></span>
+								</span>
+							</button>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3"></div>
+					<div class="col-xs-6 col-sm-3">
+						<div class="menu-item">
+							<button id="submenu-btn-stars-clear" class="btn btn-primary" type="button">
+								<span class="label-wrapper">
+									<span class="icon fi-prohibited"></span>
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="favorite-alert-template">
+		<div class="bonus-alert alert alert-info">
+			<div class="row">
+				<div class="col-xs-4 col-md-5">
+					<h5 class="bonus-label">Favorite!</h5>
+					<h6 class="bonus-score">
+						<span class="type" data-bind="text: favorite"></span>
+					</h6>
+				</div>
+				<div class="col-xs-5 col-sm-6">
+					<p class="bonus-counter form-control with-label">
+						<span class="control-label">Duration</span>
+						<span class="value">00:00</span>
+					</p>
+				</div>
+				<div class="col-xs-3 col-sm-2 col-md-1">
+					<button class="bonus-toggle btn btn-info" type="button">
+						<span class="fa fa-arrow-down"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="weapons-menu-template">
+		<div data-bind="template: { name: 'favorite-alert-template', data: favoriteData }"></div>
+
+		<div class="weapons menu-group" id="weapons-menu-group">
+			<header>
+				<div class="row">
+					<div class="col-xs-5">
+						<h4 class="group-title">
+							<span class="text">Current</span>
+						</h4>
+					</div>
+					<div class="col-xs-7">
+						<p class="group-counter form-control with-label">
+							<span class="control-label">Firearm (sm)</span>
+							<span class="value">00:00</span>
+						</p>
+					</div>
+				</div>
+			</header>
+			<div class="row">
+				<div class="group-buttons" data-bind="foreach: buttons">
+					<div class="col-xs-6 col-md-3">
+						<div class="menu-item">
+							<button data-bind="attr: { id: idPrefix + id, title: title }" class="btn btn-primary" type="button">
+								<span class="label-wrapper">
+									<span data-bind="if: iconType === 'single'">
+										<span class="icon" data-bind="css: icon"></span>
+									</span>
+
+									<span data-bind="if: iconType === 'double'">
+										<span class="double icon">
+											<span data-bind="css: icon[0]"></span>
+											<span class="size" data-bind="text: icon[1]"></span>
+										</span>
+									</span>
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="vehicles-menu-template">
+		<div data-bind="template: { name: 'favorite-alert-template', data: favoriteData }"></div>
+
+		<div class="vehicles menu-group" id="vehicles-menu-group">
+			<header>
+				<div class="row">
+					<div class="col-xs-5">
+						<h4 class="group-title">
+							<span class="text">Current</span>
+						</h4>
+					</div>
+					<div class="col-xs-7">
+						<p class="group-counter form-control with-label">
+							<span class="control-label">Car</span>
+							<span class="value">00:00</span>
+						</p>
+					</div>
+				</div>
+			</header>
+			<div class="row">
+				<div class="group-buttons" data-bind="foreach: buttons">
+					<div class="col-xs-6 col-md-3">
+						<div class="menu-item">
+							<button data-bind="attr: { id: idPrefix + id, title: title }" class="btn btn-primary" type="button">
+								<span class="label-wrapper">
+									<span class="icon" data-bind="css: icon"></span>
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="locations-menu-template">
+		<div data-bind="template: { name: 'favorite-alert-template', data: favoriteData }"></div>
+
+		<div class="locations menu-group" id="locations-menu-group">
+			<header>
+				<div class="row">
+					<div class="col-xs-5">
+						<h4 class="group-title">
+							<span class="text">Current</span>
+						</h4>
+					</div>
+					<div class="col-xs-7">
+						<p class="group-counter form-control with-label">
+							<span class="control-label">Desert</span>
+							<span class="value">00:00</span>
+						</p>
+					</div>
+				</div>
+			</header>
+			<div class="row">
+				<div class="group-buttons" data-bind="foreach: buttons">
+					<div class="col-xs-6 col-md-3">
+						<div class="menu-item">
+							<button data-bind="attr: { id: idPrefix + id, title: title }" class="btn btn-primary" type="button">
+								<span class="label-wrapper">
+									<span class="icon" data-bind="css: icon"></span>
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
 
 	<script type="text/javascript" data-main="assets/js/main"
 		src="assets/js/lib/require.js"></script>

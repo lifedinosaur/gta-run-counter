@@ -21,45 +21,132 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
   var KILLS_MENU = {
     GROUP_PREFIX: 'kills-menu-group',
     BUTTON_PREFIX: 'kills-btn',
-    GROUPS: [
-      {
-        TITLE: 'Civilians',
-        ICON: 'icon-el-adult',
-        ID: 'civ'
-      },
-      {
-        TITLE: 'Cops',
-        ICON: 'icon-police',
-        ID: 'cop'
-      },
-      {
-        TITLE: 'Animals',
-        ICON: 'fi-guide-dog',
-        ID: 'civ'
-      }
-    ],
-    BUTTONS: [
-      {
-        TITLE: 'Melee',
-        ICON: 'icon-baseball',
-        ID: 'melee'
-      },
-      {
-        TITLE: 'Firearm',
-        ICON: 'fi-target-two',
-        ID: 'firearm'
-      },
-      {
-        TITLE: 'Explosion',
-        ICON: 'icon-fire-station',
-        ID: 'explosion'
-      },
-      {
-        TITLE: 'Vehicle',
-        ICON: 'fa fa-truck',
-        ID: 'vehicle'
-      }
-    ]
+    GROUPS: [{
+      TITLE: 'Civilians',
+      ICON: 'icon-el-adult',
+      ID: 'civ'
+    }, {
+      TITLE: 'Cops',
+      ICON: 'icon-police',
+      ID: 'cop'
+    }, {
+      TITLE: 'Animals',
+      ICON: 'fi-guide-dog',
+      ID: 'civ'
+    }],
+    BUTTONS: [{
+      TITLE: 'Melee',
+      ICON: 'icon-baseball',
+      ID: 'melee'
+    }, {
+      TITLE: 'Firearm',
+      ICON: 'fi-target-two',
+      ID: 'firearm'
+    }, {
+      TITLE: 'Explosion',
+      ICON: 'icon-fire-station',
+      ID: 'explosion'
+    }, {
+      TITLE: 'Vehicle',
+      ICON: 'fa fa-truck',
+      ID: 'vehicle'
+    }]
+  };
+
+  var WEAPONS_MENU = {
+    GROUP_PREFIX: 'weapons-menu-group',
+    BUTTON_PREFIX: 'weapons-btn',
+    BUTTONS: [{
+      TITLE: 'Melee',
+      ICON: 'icon-baseball',
+      ICON_TYPE: 'single',
+      ID: 'melee'
+    }, {
+      TITLE: 'Firearm (S)',
+      ICON: ['fi-target-two', 'S'],
+      ICON_TYPE: 'double',
+      ID: 'firearm-s'
+    }, {
+      TITLE: 'Firearm (M)',
+      ICON: ['fi-target-two', 'M'],
+      ICON_TYPE: 'double',
+      ID: 'firearm-m'
+    }, {
+      TITLE: 'Firearm (L)',
+      ICON: ['fi-target-two', 'L'],
+      ICON_TYPE: 'double',
+      ID: 'firearm-l'
+    }, {
+      TITLE: 'Firearm (XL)',
+      ICON: ['fi-target-two', 'XL'],
+      ICON_TYPE: 'double',
+      ID: 'firearm-xl'
+    }, {
+      TITLE: 'Explosion',
+      ICON: 'icon-fire-station',
+      ICON_TYPE: 'single',
+      ID: 'explosion'
+    }]
+  };
+
+  var VEHICLES_MENU = {
+    GROUP_PREFIX: 'vehicles-menu-group',
+    BUTTON_PREFIX: 'vehicles-btn',
+    BUTTONS: [{
+      TITLE: 'Car',
+      ICON: 'fa fa-car',
+      ID: 'car'
+    }, {
+      TITLE: 'Truck',
+      ICON: 'fa fa-truck',
+      ID: 'truck'
+    }, {
+      TITLE: 'Bike',
+      ICON: 'fa fa-motorcycle',
+      ID: 'bike'
+    }, {
+      TITLE: 'Sea',
+      ICON: 'fa fa-ship',
+      ID: 'sea'
+    }, {
+      TITLE: 'Air',
+      ICON: 'fa fa-plane',
+      ID: 'air'
+    }, {
+      TITLE: 'Emergency',
+      ICON: 'fa fa-ambulance',
+      ID: 'emergency'
+    }]
+  };
+
+  var LOCATIONS_MENU = {
+    GROUP_PREFIX: 'locations-menu-group',
+    BUTTON_PREFIX: 'locations-btn',
+    BUTTONS: [{
+      TITLE: 'Hood',
+      ICON: 'fa fa-home',
+      ID: 'hood'
+    }, {
+      TITLE: 'City',
+      ICON: 'fa fa-building',
+      ID: 'city'
+    }, {
+      TITLE: 'Beach',
+      ICON: 'glyphicon glyphicon-sunglasses',
+      ID: 'beach'
+    }, {
+      TITLE: 'Mountains',
+      ICON: 'fi-mountains',
+      ID: 'mountains'
+    }, {
+      TITLE: 'Forest',
+      ICON: 'fa fa-tree',
+      ID: 'forest'
+    }, {
+      TITLE: 'Desert',
+      ICON: 'fa fa-sun-o',
+      ID: 'desert'
+    }]
   };
 
   var BUTTON_HEIGHT = 56;
@@ -70,7 +157,7 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
   var MENU_OFFSET = 14;
 
 
-  function ScoreMenu (targetNodeId) {
+  function ScoreMenu(targetNodeId) {
     ViewModel.call(this, targetNodeId);
 
     this.$element = $(targetNodeId);
@@ -256,6 +343,61 @@ function ($, _, ko, TweenLite, ViewModel, ScoreMenuPrimaryItem) {
             idPrefix: KILLS_MENU.BUTTON_PREFIX + '-'
           };
         })
+      };
+
+
+      // stars menu:
+      this.starsMenu = {};
+
+
+      // weapons menu:
+      this.weaponsMenu = {
+        buttons: _.map(WEAPONS_MENU.BUTTONS, function (b) {
+          return {
+            title: b.TITLE,
+            icon: b.ICON,
+            iconType: b.ICON_TYPE,
+            id: b.ID,
+            idPrefix: WEAPONS_MENU.BUTTON_PREFIX + '-'
+          };
+        }),
+
+        favoriteData: {
+          favorite: ko.observable('Melee')
+        }
+      };
+
+
+      // vehicles menu:
+      this.vehiclesMenu = {
+        buttons: _.map(VEHICLES_MENU.BUTTONS, function (b) {
+          return {
+            title: b.TITLE,
+            icon: b.ICON,
+            id: b.ID,
+            idPrefix: VEHICLES_MENU.BUTTON_PREFIX + '-'
+          };
+        }),
+
+        favoriteData: {
+          favorite: ko.observable('Car')
+        }
+      };
+
+      // locations menu:
+      this.locationsMenu = {
+        buttons: _.map(LOCATIONS_MENU.BUTTONS, function (b) {
+          return {
+            title: b.TITLE,
+            icon: b.ICON,
+            id: b.ID,
+            idPrefix: LOCATIONS_MENU.BUTTON_PREFIX + '-'
+          };
+        }),
+
+        favoriteData: {
+          favorite: ko.observable('Desert')
+        }
       };
     },
 

@@ -57,11 +57,6 @@ module.exports = function(grunt) {
 
     pkgJson: grunt.file.readJSON('package.json', { encoding: 'utf8'}),
 
-    volo: {
-      'cmd-add': 'volo:add:-nostamp:',
-      'cmd-addF': 'volo:add:-f:-nostamp:'
-    },
-
 
     // tasks init:
 
